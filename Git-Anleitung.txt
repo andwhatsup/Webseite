@@ -1,0 +1,13 @@
+nach Änderungen folgenden Befehle eingeben 
+
+# 1. Zum Website-Verzeichnis navigieren
+cd C:\Users\yannik\Documents\Webseite
+
+# 2. Alle geänderten Dateien zur Staging-Area hinzufügen
+git add .
+
+# 3. Einen Commit mit Beschreibung der Änderungen erstellen
+git commit -m "Beschreibung der Änderungen, z.B. 'Design verbessert'"
+
+# 4. Änderungen zu GitHub hochladen
+git push origin main
