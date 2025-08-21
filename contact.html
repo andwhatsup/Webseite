@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Kontakt – Homeshield</title>
+  <title>Kontakt</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -12,7 +12,7 @@
     body, html {height: 100%; line-height: 1.8;}
     .w3-bar .w3-button {padding: 16px;}
  .bgimg-contact {
-  background-image: url("Bilder/contact.jpg"); /* dein gewünschtes Bild */
+  background-image: url("Bilder/contact.jpg");
   min-height: 80vh;
   background-position: center;
   background-size: cover;
@@ -25,24 +25,69 @@
   height: 100%;
   z-index: 9999;
 }
+.navbar-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #333;
+  pointer-events: none; /* verhindert Kollision mit Links */
+}
   </style>
   
 </head>
+<script>
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const status = document.getElementById("form-status");
+    const data = new FormData(form);
+
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      status.innerHTML = "<div class='w3-panel w3-green'><p>Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.</p></div>";
+      form.reset();
+    } else {
+      status.innerHTML = "<div class='w3-panel w3-red'><p>Fehler beim Senden. Bitte versuchen Sie es später erneut.</p></div>";
+    }
+  }
+</script>
 <body>
 
 <!-- Navbar -->
 <div class="w3-top">
-  <div class="w3-bar w3-white w3-card" id="myNavbar">
-    <a href="index.html#home" class="w3-bar-item w3-button w3-wide">Startseite</a>
+  <div class="w3-bar w3-white w3-card" id="myNavbar" style="position: relative;">
+
+    <!-- Linke Seite -->
+    <a href="index.html" class="w3-bar-item w3-button w3-wide">Startseite</a>
+
+    <!-- Zentrale Beschriftung -->
+    <div class="navbar-center">
+      <span>Baumann Secure Tech</span>
+    </div>
+
+    <!-- Rechte Seite -->
     <div class="w3-right w3-hide-small">
       <a href="about.html" class="w3-bar-item w3-button"><i class="fa fa-sitemap"></i> VORGEHEN</a>
       <a href="team.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> TEAM</a>
       <a href="work.html" class="w3-bar-item w3-button"><i class="fa fa-th"></i> PROJEKTE</a>
       <a href="contact.html" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> KONTAKT</a>
     </div>
+
+    <!-- Burger-Menü für kleine Geräte -->
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
       <i class="fa fa-bars"></i>
     </a>
+
   </div>
 </div>
 
@@ -67,29 +112,31 @@
   <p class="w3-center w3-large">Wir freuen uns auf Ihre Nachricht!</p>
 
   <div class="w3-container w3-padding-32" style="max-width:900px; margin:auto;">
-    <form class="w3-card-4 w3-white" style="padding:48px;" action="sendmail.php" method="POST">
-      <div class="w3-row-padding" style="margin:0 -16px;">
-        <div class="w3-half w3-margin-bottom">
-          <label><i class="fa fa-user"></i> Name</label>
-          <input class="w3-input w3-border" type="text" name="Name" required>
-        </div>
-        <div class="w3-half">
-          <label><i class="fa fa-envelope"></i> E-Mail</label>
-          <input class="w3-input w3-border" type="email" name="Email" required>
-        </div>
-      </div>
+  <form class="w3-card-4 w3-white" style="padding:48px;" action="https://formspree.io/f/xldlyqgz" method="POST" onsubmit="return handleSubmit(event)">
+  <div class="w3-row-padding" style="margin:0 -16px;">
+    <div class="w3-half w3-margin-bottom">
+      <label><i class="fa fa-user"></i> Name</label>
+      <input class="w3-input w3-border" type="text" name="name" required>
+    </div>
+    <div class="w3-half">
+      <label><i class="fa fa-envelope"></i> E-Mail</label>
+      <input class="w3-input w3-border" type="email" name="email" required>
+    </div>
+  </div>
 
-      <p>
-        <label><i class="fa fa-pencil"></i> Nachricht</label>
-        <textarea class="w3-input w3-border" name="Message" rows="5" placeholder="Wie können wir Ihnen helfen?" required></textarea>
-      </p>
+  <p>
+    <label><i class="fa fa-pencil"></i> Nachricht</label>
+    <textarea class="w3-input w3-border" name="message" rows="5" placeholder="Wie können wir Ihnen helfen?" required></textarea>
+  </p>
 
-      <p class="w3-center">
-        <button class="w3-button w3-black w3-padding-large" type="submit">
-          <i class="fa fa-paper-plane"></i> Nachricht senden
-        </button>
-      </p>
-    </form>
+  <p class="w3-center">
+    <button class="w3-button w3-black w3-padding-large" type="submit">
+      <i class="fa fa-paper-plane"></i> Nachricht senden
+    </button>
+  </p>
+
+  <p id="form-status" class="w3-center w3-padding-16"></p>
+</form>
   </div>
 </div>
 
@@ -108,12 +155,30 @@
 
 
 <!-- Footer -->
-<footer class="w3-center w3-black w3-padding-64">
-  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Nach oben</a>
-  <div class="w3-xlarge w3-section">
+<footer class="w3-black w3-padding-64">
+  <div class="w3-content" style="max-width:1200px; position: relative;">
+    
+    <!-- Linker Bereich: Firmeninfos -->
+   <div style="text-align: left; margin-left: 0; padding-left: 16px;">
+      <h4 style="margin-bottom: 4px;">Baumann Secure Tech</h4>
+      <p style="margin: 0;">Musterstrasse 12, 8500 Frauenfeld</p>
+      <p style="margin: 0;">kontakt@bst.ch | +41 79 123 45 67</p>
+  </div>
+
+    <!-- Zentrierter "Nach oben"-Button -->
+    <div style="position: absolute; left: 50%; transform: translateX(-50%); top: 0;">
+      <a href="#home" class="w3-button w3-light-grey">
+        <i class="fa fa-arrow-up w3-margin-right"></i>Nach oben
+      </a>
+    </div>
+
+  </div>
+ <!-- 
+    <div class="w3-xlarge w3-section">
     <i class="fa fa-instagram w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
-  </div>
+    </div> 
+  -->
  </footer>
 
 <script>

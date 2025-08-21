@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>W3.CSS Template</title>
+<title>BST Webseite</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -19,7 +19,7 @@ body, html {
 .bgimg-1 {
   background-position: center;
   background-size: cover;
-  background-image: url("Bilder/frontimage.jpg");
+  background-image: url("Bilder/frontbild.jpg");
   min-height: 95%;
 }
 
@@ -58,26 +58,57 @@ body, html {
   transition: opacity 0.3s;
   font-size: 14px;
 }
+.navbar-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #333;
+  pointer-events: none; /* verhindert Kollision mit Links */
+}
+.w3-button.fancy-hover {
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.w3-button.fancy-hover:hover {
+  background-color: #888 !important; /* Grünton passend zu Tech/Sicherheit */
+  color: white !important;
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
 </style>
 </head>
 <body>
 
 <!-- Navbar (sit on top) -->
+<!-- Navbar (sit on top) -->
 <div class="w3-top">
-  <div class="w3-bar w3-white w3-card" id="myNavbar">
+  <div class="w3-bar w3-white w3-card" id="myNavbar" style="position: relative;">
+
+    <!-- Linke Seite -->
     <a href="#home" class="w3-bar-item w3-button w3-wide">Startseite</a>
-    <!-- Right-sided navbar links -->
+
+    <!-- Zentrale Beschriftung -->
+    <div class="navbar-center">
+      <span>Baumann Secure Tech</span>
+    </div>
+
+    <!-- Rechte Seite -->
     <div class="w3-right w3-hide-small">
       <a href="about.html" class="w3-bar-item w3-button"><i class="fa fa-sitemap"></i> VORGEHEN</a>
       <a href="team.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> TEAM</a>
       <a href="work.html" class="w3-bar-item w3-button"><i class="fa fa-th"></i> PROJEKTE</a>
       <a href="contact.html" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> KONTAKT</a>
     </div>
-    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
+    <!-- Burger-Menü für kleine Geräte -->
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
       <i class="fa fa-bars"></i>
     </a>
+
   </div>
 </div>
 
@@ -96,15 +127,16 @@ body, html {
 <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
   <!-- HOMESHIELD Titel oben zentriert -->
   <div class="w3-display-topmiddle w3-center w3-padding-64">
-    <h1 class="w3-text-white" style="font-size: 6rem; font-weight: bold; margin: 0;">Homeshield</h1>
+    <h1 class="w3-text-white" style="font-size: 8rem; font-weight: bold; margin: 0;">BST</h1>
   </div>
 
-  <!-- Linker Infotext -->
-<div class="w3-display-container w3-text-white" style="position: absolute; top: 30%; width: 100%; text-align: center;">
-  <p style="font-size: 1.8rem; margin-top: 20px;">
-    Ihr Partner für moderne Überwachung und automatisiertes Wohnen
-  </p>
-</div>
+  <!-- Zentrierter Untertitel -->
+  <div class="w3-display-container w3-text-white" style="position: absolute; top: 40%; width: 100%; text-align: center;">
+    <p style="font-size: 2.4rem; font-weight: 500; margin-top: 20px;">
+      Moderne Smart-Home-Technik für kleine Betriebe und Ihr Zuhause.
+    </p>
+  </div>
+
   <!-- Social Icons unten links -->
   <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
     <i class="fa fa-linkedin w3-hover-opacity"></i>
@@ -125,7 +157,7 @@ body, html {
       <ul class="w3-ul w3-large w3-center">
         <li>✓ Ihr Eigenheim gegen Einbruch und Vandalismus schützen</li>
         <li>✓ Sicherheitssysteme einfach und zentral steuern</li>
-        <li>✓ Zeitgemäß wohnen – mit Technik, die sich Ihrem Alltag anpasst</li>
+        <li>✓ Zeitgemäss wohnen – mit Technik, die sich Ihrem Alltag anpasst</li>
         <li>✓ Durch Automatisierung mehr Komfort im täglichen Leben gewinnen</li>
         <li>✓ Transparenz über Geräte, Energieverbrauch und Zugriff behalten</li>
       </ul>
@@ -152,7 +184,7 @@ body, html {
   <h3 class="w3-large">Hovern Sie über die Geräte, um mehr zu erfahren.</h3>
 
   <div class="smarthome-container" style="position: relative; display: inline-block; margin-top: 32px;">
-    <img src="bilder/Smarthome.png" alt="3D-Smart-Home" class="w3-image w3-card-4" style="max-width:1000px; width:90%;">
+    <img src="Bilder/Smarthome.png" alt="3D-Smart-Home" class="w3-image w3-card-4" style="max-width:1000px; width:90%;">
 
     <!-- Kamera ok -->
     <div class="hotspot" style="top: 50%; left: 12%;">
@@ -189,8 +221,15 @@ body, html {
       <span class="tooltip">Elektronisches Türschloss mit Fingerabdruck</span>
     </div>
 
+        <!-- Fernseher -->
+    <div class="hotspot" style="top: 57%; left: 37%;">
+      <span class="tooltip">Smart-TV mit Sprachsteuerung und zentraler Medienverwaltung</span>
+    </div>
 
-
+    <!-- Mediaserver -->
+    <div class="hotspot" style="top: 65%; left: 46%;">
+      <span class="tooltip">Mediaserver für lokale Inhalte und Streaming – auch offline nutzbar</span>
+    </div>
 
 
   </div>
@@ -207,7 +246,7 @@ body, html {
     <div class="w3-third w3-center w3-margin-bottom">
       <i class="fa fa-video-camera w3-jumbo"></i>
       <h4>Videoüberwachung</h4>
-      <p>Kamerainstallation innen & außen, mit App-Zugriff & Datenschutzkonzept.</p>
+      <p>Kamerainstallation innen & aussen, mit App-Zugriff & Datenschutzkonzept.</p>
     </div>
 
     <div class="w3-third w3-center w3-margin-bottom">
@@ -225,7 +264,7 @@ body, html {
     <div class="w3-third w3-center w3-margin-bottom">
       <i class="fa fa-bell w3-jumbo"></i>
       <h4>Alarmsysteme</h4>
-      <p>Bewegungsmelder, Außensirenen und Innensirenen und stille Alarme.</p>
+      <p>Bewegungsmelder, Aussensirenen und Innensirenen und stille Alarme.</p>
     </div>
 
     <div class="w3-third w3-center w3-margin-bottom">
@@ -237,7 +276,7 @@ body, html {
     <div class="w3-third w3-center w3-margin-bottom">
       <i class="fa fa-hdd-o w3-jumbo"></i>
       <h4>Lokale Datenspeicherung</h4>
-      <p>Ihre Daten gehören Ihnen – Speicherung ausschließlich lokal, nicht in der Cloud.</p>
+      <p>Ihre Daten gehören Ihnen – Speicherung ausschliesslich lokal, nicht in der Cloud.</p>
     </div>
 
   </div>
@@ -250,10 +289,10 @@ body, html {
   </p>
 
   <div class="w3-bar w3-center">
-    <a href="about.html" class="w3-button w3-black w3-margin w3-round-large" style="width:200px;">Vorgehen</a>
-    <a href="team.html" class="w3-button w3-black w3-margin w3-round-large" style="width:200px;">Team</a>
-    <a href="work.html" class="w3-button w3-black w3-margin w3-round-large" style="width:200px;">Projekte</a>
-    <a href="contact.html" class="w3-button w3-black w3-margin w3-round-large" style="width:200px;">Kontakt</a>
+    <a href="about.html" class="w3-button w3-black w3-margin w3-round-large fancy-hover" style="width:200px;">Vorgehen</a>
+    <a href="team.html" class="w3-button w3-black w3-margin w3-round-large fancy-hover" style="width:200px;">Team</a>
+    <a href="work.html" class="w3-button w3-black w3-margin w3-round-large fancy-hover" style="width:200px;">Projekte</a>
+    <a href="contact.html" class="w3-button w3-black w3-margin w3-round-large fancy-hover" style="width:200px;">Kontakt</a>
   </div>
 </div>
 
@@ -271,12 +310,30 @@ body, html {
 
 
 <!-- Footer -->
-<footer class="w3-center w3-black w3-padding-64">
-  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Nach oben</a>
-  <div class="w3-xlarge w3-section">
+<footer class="w3-black w3-padding-64">
+  <div class="w3-content" style="max-width:1200px; position: relative;">
+    
+    <!-- Linker Bereich: Firmeninfos -->
+   <div style="text-align: left; margin-left: 0; padding-left: 16px;">
+      <h4 style="margin-bottom: 4px;">Baumann Secure Tech</h4>
+      <p style="margin: 0;">Musterstrasse 12, 8500 Frauenfeld</p>
+      <p style="margin: 0;">kontakt@bst.ch | +41 79 123 45 67</p>
+  </div>
+
+    <!-- Zentrierter "Nach oben"-Button -->
+    <div style="position: absolute; left: 50%; transform: translateX(-50%); top: 0;">
+      <a href="#home" class="w3-button w3-light-grey">
+        <i class="fa fa-arrow-up w3-margin-right"></i>Nach oben
+      </a>
+    </div>
+
+  </div>
+ <!-- 
+    <div class="w3-xlarge w3-section">
     <i class="fa fa-instagram w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
-  </div>
+    </div> 
+  -->
  </footer>
  
 <script>

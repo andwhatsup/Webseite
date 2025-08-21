@@ -19,23 +19,45 @@
       background-size: cover;
       background-repeat: no-repeat;
     }
+    .navbar-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #333;
+  pointer-events: none; /* verhindert Kollision mit Links */
+}
   </style>
 </head>
 <body>
 
 <!-- Navbar -->
 <div class="w3-top">
-  <div class="w3-bar w3-white w3-card" id="myNavbar">
-    <a href="index.html#home" class="w3-bar-item w3-button w3-wide">Startseite</a>
+  <div class="w3-bar w3-white w3-card" id="myNavbar" style="position: relative;">
+
+    <!-- Linke Seite -->
+    <a href="index.html" class="w3-bar-item w3-button w3-wide">Startseite</a>
+
+    <!-- Zentrale Beschriftung -->
+    <div class="navbar-center">
+      <span>Baumann Secure Tech</span>
+    </div>
+
+    <!-- Rechte Seite -->
     <div class="w3-right w3-hide-small">
       <a href="about.html" class="w3-bar-item w3-button"><i class="fa fa-sitemap"></i> VORGEHEN</a>
       <a href="team.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> TEAM</a>
       <a href="work.html" class="w3-bar-item w3-button"><i class="fa fa-th"></i> PROJEKTE</a>
       <a href="contact.html" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> KONTAKT</a>
     </div>
+
+    <!-- Burger-Menü für kleine Geräte -->
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
       <i class="fa fa-bars"></i>
     </a>
+
   </div>
 </div>
 
@@ -87,12 +109,30 @@
 </div>
 
 <!-- Footer -->
-<footer class="w3-center w3-black w3-padding-64">
-  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Nach oben</a>
-  <div class="w3-xlarge w3-section">
+<footer class="w3-black w3-padding-64">
+  <div class="w3-content" style="max-width:1200px; position: relative;">
+    
+    <!-- Linker Bereich: Firmeninfos -->
+   <div style="text-align: left; margin-left: 0; padding-left: 16px;">
+      <h4 style="margin-bottom: 4px;">Baumann Secure Tech</h4>
+      <p style="margin: 0;">Musterstrasse 12, 8500 Frauenfeld</p>
+      <p style="margin: 0;">kontakt@bst.ch | +41 79 123 45 67</p>
+  </div>
+
+    <!-- Zentrierter "Nach oben"-Button -->
+    <div style="position: absolute; left: 50%; transform: translateX(-50%); top: 0;">
+      <a href="#home" class="w3-button w3-light-grey">
+        <i class="fa fa-arrow-up w3-margin-right"></i>Nach oben
+      </a>
+    </div>
+
+  </div>
+ <!-- 
+    <div class="w3-xlarge w3-section">
     <i class="fa fa-instagram w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
-  </div>
+    </div> 
+  -->
  </footer>
 
 <script>
