@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About – Homeshield</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+    body, html {
+      height: 100%;
+      line-height: 1.8;
+    }
+    .bgimg-1 {
+      background-position: center;
+      background-size: cover;
+      background-image: url("Bilder/frontimage.jpg");
+      min-height: 100%;
+    }
+    .w3-bar .w3-button {
+      padding: 16px;
+    }
+    .bgimg-2 {
+  background-image: url("Bilder/vorgehen.jpg");
+  min-height: 80vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+.w3-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 9999;
+}
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="index.html#home" class="w3-bar-item w3-button w3-wide">Startseite</a>
+    <div class="w3-right w3-hide-small">
+      <a href="about.html" class="w3-bar-item w3-button"><i class="fa fa-sitemap"></i> VORGEHEN</a>
+      <a href="team.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> TEAM</a>
+      <a href="work.html" class="w3-bar-item w3-button"><i class="fa fa-th"></i> PROJEKTE</a>
+      <a href="contact.html" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> KONTAKT</a>
+    </div>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<header class="bgimg-2 w3-display-container w3-grayscale-min">
+  <div class="w3-display-middle w3-text-white" style="text-align:center;">
+    <h1 class="w3-xxxlarge w3-animate-top">Unser Vorgehen</h1>
+    <p class="w3-xlarge">So arbeiten wir mit Ihnen Schritt für Schritt</p>
+  </div>
+</header>
+
+
+
+
+<!-- Sidebar for small screens -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Schliessen ×</a>
+  <a href="about.html" class="w3-bar-item w3-button">Vorgehen</a>
+  <a href="team.html" class="w3-bar-item w3-button">Team</a>
+  <a href="work.html" class="w3-bar-item w3-button">Projekte</a>
+  <a href="contact.html" class="w3-bar-item w3-button">Kontakt</a>
+</nav>
+
+<!-- Page Content: Vorgehen -->
+<div class="w3-container" style="padding:128px 16px" id="about">
+  <h3 class="w3-center">Der ganze Prozess ist in vier Schritte eingeteilt</h3>
+   
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-quarter">
+      <i class="fa fa-comments w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large">1. Kontaktaufnahme</p>
+      <p>Bei der Kontaktaufnahme geht es darum herauszufinden, wie Ihre Situation genau aussieht und mit welchen Mittel wir Ihr Bedürfnis am besten stillen können</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-tasks w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">2. Konzept</p>
+      <p>Nun erstellen wir ein Konzept für Sie, dass aufzeigt, wie wir die Idee umsetzen wollen. </p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-cogs w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">3. Installation</p>
+      <p>Nach dem Sie uns Ihr Einvertständnis gegeben haben, installieren wir das Sicherheitssystem bei Ihnen zuhause und zeigen Ihnen auf, wie sie damit umgehen können</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-phone w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">4. Support</p>
+      <p>Dieser Teil umfasst den Support bei Updates, Erneuerungen oder Erweiterungen Ihres bestehenden Sicherheitssystems.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Call to Action -->
+<div class="w3-center w3-padding-64 w3-light-grey">
+  <h3 class="w3-xxlarge">Bereit für den ersten Schritt?</h3>
+  <p class="w3-xlarge w3-margin-top">Kontaktieren Sie uns für Ihre individuelle Sicherheitslösung</p>
+  <a href="contact.html" class="w3-button w3-black w3-padding-large w3-xlarge w3-margin-top">
+    Jetzt Kontakt aufnehmen
+  </a>
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Nach oben</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+ </footer>
+
+<!-- Scripts -->
+<script>
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+  }
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+  }
+</script>
+
+</body>
+</html>

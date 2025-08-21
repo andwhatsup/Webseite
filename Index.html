@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("Bilder/frontimage.jpg");
+  min-height: 95%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+.hotspot {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.hotspot:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip {
+  visibility: hidden;
+  width: 220px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 14px;
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="#home" class="w3-bar-item w3-button w3-wide">Startseite</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="about.html" class="w3-bar-item w3-button"><i class="fa fa-sitemap"></i> VORGEHEN</a>
+      <a href="team.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> TEAM</a>
+      <a href="work.html" class="w3-bar-item w3-button"><i class="fa fa-th"></i> PROJEKTE</a>
+      <a href="contact.html" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> KONTAKT</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Schliessen ×</a>
+  <a href="about.html" class="w3-bar-item w3-button">Vorgehen</a>
+  <a href="team.html" class="w3-bar-item w3-button">Team</a>
+  <a href="work.html" class="w3-bar-item w3-button">Projekte</a>
+  <a href="contact.html" class="w3-bar-item w3-button">Kontakt</a>
+</nav>
+
+
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <!-- HOMESHIELD Titel oben zentriert -->
+  <div class="w3-display-topmiddle w3-center w3-padding-64">
+    <h1 class="w3-text-white" style="font-size: 6rem; font-weight: bold; margin: 0;">Homeshield</h1>
+  </div>
+
+  <!-- Linker Infotext -->
+<div class="w3-display-container w3-text-white" style="position: absolute; top: 30%; width: 100%; text-align: center;">
+  <p style="font-size: 1.8rem; margin-top: 20px;">
+    Ihr Partner für moderne Überwachung und automatisiertes Wohnen
+  </p>
+</div>
+  <!-- Social Icons unten links -->
+  <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+</header>
+
+<div class="w3-container w3-padding-64 w3-light-grey" id="vision">
+  <h2 class="w3-center" style="font-size: 2.8rem; font-weight: bold; margin-bottom: 16px;">
+    Was wir mit Homeshield erreichen möchten
+  </h2>
+
+  <p class="w3-center" style="font-size: 1.5rem; max-width: 800px; margin: 0 auto;">
+    Homeshield bringt Sicherheit und Komfort in Ihr Zuhause – individuell, modern und zuverlässig.
+  </p>
+
+  <div class="w3-row-padding w3-center" style="margin-top:48px">
+    <div class="w3-col m6">
+      <ul class="w3-ul w3-large w3-center">
+        <li>✓ Ihr Eigenheim gegen Einbruch und Vandalismus schützen</li>
+        <li>✓ Sicherheitssysteme einfach und zentral steuern</li>
+        <li>✓ Zeitgemäß wohnen – mit Technik, die sich Ihrem Alltag anpasst</li>
+        <li>✓ Durch Automatisierung mehr Komfort im täglichen Leben gewinnen</li>
+        <li>✓ Transparenz über Geräte, Energieverbrauch und Zugriff behalten</li>
+      </ul>
+    </div>
+    <div class="w3-col m6">
+      <ul class="w3-ul w3-large w3-center">
+        <li>✓ Lokale, datenschutzfreundliche Lösungen statt Cloud-Zwang</li>
+        <li>✓ Vernetzte Geräte sicher und zuverlässig in Ihr Heim integrieren</li>
+        <li>✓ Unterstützung beim Einstieg ins Smart-Home – von A bis Z</li>
+        <li>✓ Beratung & Installation durch erfahrene Fachleute</li>
+        <li>✓ Alles aus einer Hand – ohne technisches Vorwissen notwendig</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- Visualisierung: Smart Home Haus -->
+
+<!-- Smart Home mit Hover-Hotspots -->
+<div class="w3-container w3-padding-64 w3-white w3-center">
+  <h3 class="w3-center">Wie ein modernes Smart Home aussehen kann</h3>
+  <p class="w3-large">Dieses Beispiel zeigt, welche Geräte zentral gesteuert und integriert werden können – übersichtlich und sicher verbunden mit dem Homeshield-Miniserver.</p>
+  <h3 class="w3-large">Hovern Sie über die Geräte, um mehr zu erfahren.</h3>
+
+  <div class="smarthome-container" style="position: relative; display: inline-block; margin-top: 32px;">
+    <img src="bilder/Smarthome.png" alt="3D-Smart-Home" class="w3-image w3-card-4" style="max-width:1000px; width:90%;">
+
+    <!-- Kamera ok -->
+    <div class="hotspot" style="top: 50%; left: 12%;">
+      <span class="tooltip">Aussenkamera mit Bewegungserkennung</span>
+    </div>
+
+    <!-- Staubsauger ok -->
+    <div class="hotspot" style="top: 83%; left: 19%;">
+      <span class="tooltip">Automatischer Saugroboter – App-gesteuert</span>
+    </div>
+
+    <!-- Türkamera ok -->
+    <div class="hotspot" style="top: 53%; left: 87%;">
+      <span class="tooltip">Sichere Eingangskontrolle mit Kamera, Live-Stream und Aufzeichnung</span>
+    </div>
+
+     <!-- Solarpanels ok-->
+    <div class="hotspot" style="top: 23%; left: 48%;">
+      <span class="tooltip">Energieproduktion live überwachen und Verbrauch automatisch optimieren</span>
+    </div>
+
+       <!-- Storen ok -->
+    <div class="hotspot" style="top: 45%; left: 78%;">
+      <span class="tooltip">Automatische Storensteuerung – bequem per App oder Zeitplan</span>
+    </div>
+
+       <!-- Server ok-->
+    <div class="hotspot" style="top: 78%; left: 51%;">
+      <span class="tooltip">Zentrale Steuerungseinheit – lokal, sicher und jederzeit erweiterbar</span>
+    </div>
+    
+        <!-- Türe ok -->
+    <div class="hotspot" style="top: 65%; left: 77%;">
+      <span class="tooltip">Elektronisches Türschloss mit Fingerabdruck</span>
+    </div>
+
+
+
+
+
+  </div>
+</div>
+
+
+<!-- Unsere Leistungen -->
+<div class="w3-container w3-padding-64 w3-light-grey" id="leistungen">
+  <h2 class="w3-center">Unsere Leistungen</h2>
+  <p class="w3-center w3-large">Professionelle Sicherheits- und Smart-Home-Lösungen aus einer Hand</p>
+
+  <div class="w3-row-padding" style="margin-top:48px">
+
+    <div class="w3-third w3-center w3-margin-bottom">
+      <i class="fa fa-video-camera w3-jumbo"></i>
+      <h4>Videoüberwachung</h4>
+      <p>Kamerainstallation innen & außen, mit App-Zugriff & Datenschutzkonzept.</p>
+    </div>
+
+    <div class="w3-third w3-center w3-margin-bottom">
+      <i class="fa fa-home w3-jumbo"></i>
+      <h4>Smart-Home-Steuerung</h4>
+      <p>Licht, Heizung, Storen – alles zentral steuerbar über App oder Sprachassistent.</p>
+    </div>
+
+    <div class="w3-third w3-center w3-margin-bottom">
+      <i class="fa fa-unlock-alt w3-jumbo"></i>
+      <h4>Zugangskontrolle</h4>
+      <p>Elektronische Türschlösser, Garagentore, Video-Gegensprechanlagen & schlüssellose Systeme.</p>
+    </div>
+
+    <div class="w3-third w3-center w3-margin-bottom">
+      <i class="fa fa-bell w3-jumbo"></i>
+      <h4>Alarmsysteme</h4>
+      <p>Bewegungsmelder, Außensirenen und Innensirenen und stille Alarme.</p>
+    </div>
+
+    <div class="w3-third w3-center w3-margin-bottom">
+      <i class="fa fa-wrench w3-jumbo"></i>
+      <h4>Installation & Support</h4>
+      <p>Beratung vor Ort, Einrichtung, Schulung und langfristige Systempflege.</p>
+    </div>
+
+    <div class="w3-third w3-center w3-margin-bottom">
+      <i class="fa fa-hdd-o w3-jumbo"></i>
+      <h4>Lokale Datenspeicherung</h4>
+      <p>Ihre Daten gehören Ihnen – Speicherung ausschließlich lokal, nicht in der Cloud.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Weiterleitung nach "Unsere Leistungen" -->
+<div class="w3-container w3-center w3-padding-64">
+  <p class="w3-xlarge w3-margin-bottom">
+    Sie möchten sehen, wie wir arbeiten, unser Team kennenlernen oder direkt Kontakt aufnehmen?
+  </p>
+
+  <div class="w3-bar w3-center">
+    <a href="about.html" class="w3-button w3-black w3-margin w3-round-large" style="width:200px;">Vorgehen</a>
+    <a href="team.html" class="w3-button w3-black w3-margin w3-round-large" style="width:200px;">Team</a>
+    <a href="work.html" class="w3-button w3-black w3-margin w3-round-large" style="width:200px;">Projekte</a>
+    <a href="contact.html" class="w3-button w3-black w3-margin w3-round-large" style="width:200px;">Kontakt</a>
+  </div>
+</div>
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+
+
+
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Nach oben</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+ </footer>
+ 
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+</script>
+
+</body>
+</html>
