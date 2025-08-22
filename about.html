@@ -47,6 +47,15 @@
   color: #333;
   pointer-events: none; /* verhindert Kollision mit Links */
 }
+/* Standard: volles Logo anzeigen, kurzes verstecken */
+.full-title { display: inline; }
+.short-title { display: none; }
+
+/* Auf kleineren Bildschirmen (unter 600px) nur das kurze anzeigen */
+@media (max-width: 600px) {
+  .full-title { display: none; }
+  .short-title { display: inline; }
+}
   </style>
 </head>
 <body>
@@ -58,10 +67,11 @@
     <!-- Linke Seite -->
     <a href="index.html" class="w3-bar-item w3-button w3-wide">Startseite</a>
 
-    <!-- Zentrale Beschriftung -->
-    <div class="navbar-center">
-      <span>Baumann Secure Tech</span>
-    </div>
+     <!-- Zentrale Beschriftung -->
+   <div class="navbar-center">
+      <span class="full-title">Baumann Secure Tech</span>
+      <span class="short-title">BST</span>
+  </div>  
 
     <!-- Rechte Seite -->
     <div class="w3-right w3-hide-small">
@@ -147,12 +157,7 @@
       <p style="margin: 0;">kontakt@bst.ch | +41 79 123 45 67</p>
   </div>
 
-    <!-- Zentrierter "Nach oben"-Button -->
-    <div style="position: absolute; left: 50%; transform: translateX(-50%); top: 0;">
-      <a href="#home" class="w3-button w3-light-grey">
-        <i class="fa fa-arrow-up w3-margin-right"></i>Nach oben
-      </a>
-    </div>
+    
 
   </div>
  <!-- 

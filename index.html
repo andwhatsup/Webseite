@@ -26,6 +26,8 @@ body, html {
 .w3-bar .w3-button {
   padding: 16px;
 }
+
+/* Hotspot-Styling */
 .hotspot {
   position: absolute;
   width: 60px;
@@ -36,28 +38,27 @@ body, html {
   transform: translate(-50%, -50%);
 }
 
+/* Tooltip per Hover sichtbar */
 .hotspot:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
+  display: block;
 }
 
+/* Tooltip-Grunddesign */
 .tooltip {
-  visibility: hidden;
-  width: 220px;
+  display: none;
+  position: absolute;
   background-color: #000;
   color: #fff;
-  text-align: center;
+  padding: 8px 12px;
   border-radius: 6px;
-  padding: 8px;
-  position: absolute;
-  z-index: 1;
-  top: -45px;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.3s;
+  white-space: nowrap;
+  z-index: 10;
   font-size: 14px;
+  transform: translate(-50%, -120%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
+
+/* Zentrale Navbar-Beschriftung */
 .navbar-center {
   position: absolute;
   left: 50%;
@@ -68,19 +69,51 @@ body, html {
   color: #333;
   pointer-events: none; /* verhindert Kollision mit Links */
 }
+
+/* Button mit Fancy Hover */
 .w3-button.fancy-hover {
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .w3-button.fancy-hover:hover {
-  background-color: #888 !important; /* Grünton passend zu Tech/Sicherheit */
+  background-color: #888 !important;
   color: white !important;
   transform: translateY(-10px);
   box-shadow: 0 8px 16px rgba(0,0,0,0.3);
 }
+
+/* Logo je nach Bildschirmgröße anpassen */
+.full-title { display: inline; }
+.short-title { display: none; }
+
+@media (max-width: 600px) {
+  .full-title { display: none; }
+  .short-title { display: inline; }
+}
 </style>
 </head>
+<script>
+  // Funktion für Touch-Geräte
+  document.querySelectorAll('.hotspot').forEach(hotspot => {
+    hotspot.addEventListener('click', function (e) {
+      // Alle Tooltips ausblenden
+      document.querySelectorAll('.tooltip').forEach(t => t.style.display = 'none');
+
+      // Tooltip vom geklickten Element einblenden
+      const tooltip = this.querySelector('.tooltip');
+      if (tooltip) {
+        tooltip.style.display = 'block';
+        e.stopPropagation(); // Klick nicht weiterreichen
+      }
+    });
+  });
+
+  // Klick außerhalb schließt Tooltip
+  document.addEventListener('click', function () {
+    document.querySelectorAll('.tooltip').forEach(t => t.style.display = 'none');
+  });
+</script>
 <body>
 
 <!-- Navbar (sit on top) -->
@@ -92,9 +125,10 @@ body, html {
     <a href="#home" class="w3-bar-item w3-button w3-wide">Startseite</a>
 
     <!-- Zentrale Beschriftung -->
-    <div class="navbar-center">
-      <span>Baumann Secure Tech</span>
-    </div>
+   <div class="navbar-center">
+      <span class="full-title">Baumann Secure Tech</span>
+      <span class="short-title">BST</span>
+  </div>  
 
     <!-- Rechte Seite -->
     <div class="w3-right w3-hide-small">
@@ -145,11 +179,11 @@ body, html {
 
 <div class="w3-container w3-padding-64 w3-light-grey" id="vision">
   <h2 class="w3-center" style="font-size: 2.8rem; font-weight: bold; margin-bottom: 16px;">
-    Was wir mit Homeshield erreichen möchten
+    Was wir mit BST erreichen möchten
   </h2>
 
   <p class="w3-center" style="font-size: 1.5rem; max-width: 800px; margin: 0 auto;">
-    Homeshield bringt Sicherheit und Komfort in Ihr Zuhause – individuell, modern und zuverlässig.
+    Baumann Secure Tech bringt Sicherheit und Komfort in Ihr Zuhause – individuell, modern und zuverlässig.
   </p>
 
   <div class="w3-row-padding w3-center" style="margin-top:48px">
@@ -180,7 +214,7 @@ body, html {
 <!-- Smart Home mit Hover-Hotspots -->
 <div class="w3-container w3-padding-64 w3-white w3-center">
   <h3 class="w3-center">Wie ein modernes Smart Home aussehen kann</h3>
-  <p class="w3-large">Dieses Beispiel zeigt, welche Geräte zentral gesteuert und integriert werden können – übersichtlich und sicher verbunden mit dem Homeshield-Miniserver.</p>
+  <p class="w3-large">Dieses Beispiel zeigt, welche Geräte zentral gesteuert und integriert werden können – übersichtlich und sicher verbunden mit dem Baumann Secure Tech.</p>
   <h3 class="w3-large">Hovern Sie über die Geräte, um mehr zu erfahren.</h3>
 
   <div class="smarthome-container" style="position: relative; display: inline-block; margin-top: 32px;">
