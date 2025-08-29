@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Projekte</title>
+  <title>Kostenrechner</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -12,7 +12,7 @@
     body, html {height: 100%; line-height: 1.8;}
     .w3-bar .w3-button {padding: 16px;}
     .bgimg-3 {
-      background-image: url("Bilder/Projekte.jpg"); /* dein Startbild hier */
+      background-image: url("Bilder/kostenrechner.jpg"); /* dein Startbild hier */
       min-height: 80vh;
       background-position: center;
       background-size: cover;
@@ -35,7 +35,6 @@
   color: #333;
   pointer-events: none; /* verhindert Kollision mit Links */
 }
-
 /* Standard: volles Logo anzeigen, kurzes verstecken */
 .full-title { display: inline; }
 .short-title { display: none; }
@@ -48,75 +47,6 @@
 .nav-link {
   font-size: 1.2rem;
   font-weight: 600;
-}
-
-@media (max-width: 1200px) {
-  footer .w3-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  footer .w3-content > div {
-    margin-top: 16px !important;
-  }
-
-  footer img {
-    height: 100px; /* Logo kleiner */
-  }
-
-  footer h4 {
-    font-size: 1.1rem; /* Überschrift kleiner */
-  }
-
-  footer p {
-    font-size: 0.95rem; /* Fließtext kleiner */
-  }
-}
-footer .w3-content {
-  max-width: 1200px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.navbar-center {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #333;
-  pointer-events: none;
-}
-
-/* Desktop: volles Logo anzeigen */
-.full-title { display: inline; }
-.short-title { display: none; font-size: 1.6rem; font-weight: bold; color: #333; }
-
-/* Ab 1200px Breite umschalten */
-@media (max-width: 1200px) {
-  .full-title { display: none; }
-  .short-title { display: inline; }
-}
-@media (max-width: 1200px) {
-  .w3-right {
-    display: none !important;
-  }
-
-  .w3-bar .w3-button.w3-hide-large.w3-hide-medium {
-    display: block !important;
-  }
-}
-.footer-logo {
-  height: 130px;
-  transition: height 0.3s ease;
-}
-@media (max-width: 1200px) {
-  .footer-logo {
-    height: 100px;
-  }
 }
   </style>
 </head>
@@ -135,14 +65,14 @@ footer .w3-content {
       <span class="short-title">BST</span>
   </div>  
 
-    <!-- Rechte Seite -->
-    <!-- Rechte Seite -->
+     <!-- Rechte Seite -->
     <div class="w3-right w3-hide-small">
       <a href="about.html" class="w3-bar-item w3-button nav-link"><i class="fa fa-sitemap"></i> VORGEHEN</a>
       <a href="team.html" class="w3-bar-item w3-button nav-link"><i class="fa fa-user"></i> TEAM</a>
       <a href="work.html" class="w3-bar-item w3-button nav-link"><i class="fa fa-th"></i> PROJEKTE</a>
       <a href="contact.html" class="w3-bar-item w3-button nav-link"><i class="fa fa-envelope"></i> KONTAKT</a>
     </div>
+
     <!-- Burger-Menü für kleine Geräte -->
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
       <i class="fa fa-bars"></i>
@@ -154,10 +84,85 @@ footer .w3-content {
 <!-- Startbild -->
 <header class="bgimg-3 w3-display-container w3-grayscale-min">
   <div class="w3-display-middle w3-text-white" style="text-align:center;">
-    <h1 class="w3-xxxlarge w3-animate-top">Unsere Projekte</h1>
-    <p class="w3-xlarge">Ein Einblick in unsere abgeschlossenen Arbeiten</p>
+    <h1 class="w3-xxxlarge w3-animate-top">Kostenrechner</h1>
+    <p class="w3-xlarge">Der Kostenrechner gewährt Ihnen eine ungefähre Schätzung der Kosten</p>
   </div>
 </header>
+
+
+<div class="w3-container w3-padding-64 w3-light-grey">
+  <h2 class="w3-center">Kostenrechner für Ihr Eigenheim</h2>
+  <p class="w3-center w3-large">Ermitteln Sie einen Richtwert für Ihre Smart-Home-Sicherheitslösung</p>
+
+  <div class="w3-content" style="max-width:600px;">
+    <label>Anzahl Kameras:</label>
+    <input class="w3-input w3-margin-bottom" type="number" id="kameras" value="2" min="0">
+
+    <label>Anzahl Sirenen:</label>
+    <input class="w3-input w3-margin-bottom" type="number" id="sirenen" value="1" min="0">
+
+    <label>Anzahl Smart-Home-Geräte:</label>
+    <input class="w3-input w3-margin-bottom" type="number" id="smart" value="3" min="0">
+
+    <label><input type="checkbox" id="sprach"> Sprachsteuerung (z.B. Alexa)</label><br>
+    <label><input type="checkbox" id="installation" checked> Installation gewünscht</label><br>
+    <label><input type="checkbox" id="app"> Smartphone App-Zugriff</label><br><br>
+
+    <button class="w3-button w3-black" onclick="calculatePrice()">Kosten berechnen</button>
+
+    <h3 class="w3-margin-top">Geschätzte Kosten: <span id="price">–</span> CHF</h3>
+  </div>
+</div>
+
+<script>
+function calculatePrice() {
+  const cam = parseInt(document.getElementById("kameras").value) || 0;
+  const sir = parseInt(document.getElementById("sirenen").value) || 0;
+  const sm = parseInt(document.getElementById("smart").value) || 0;
+  const sprach = document.getElementById("sprach").checked;
+  const inst = document.getElementById("installation").checked;
+  const app = document.getElementById("app").checked;
+
+  let total = 0;
+  total += cam * 300;
+  total += sir * 150;
+  total += sm * 120;
+  if (sprach) total += 200;
+  if (inst) total += 600;
+  if (app) total += 100;
+
+  document.getElementById("price").innerText = total.toLocaleString('de-CH');
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Sidebar -->
 <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
@@ -168,62 +173,23 @@ footer .w3-content {
   <a href="contact.html" class="w3-bar-item w3-button">Kontakt</a>
 </nav>
 
-<!-- Projekte Abschnitt -->
-<div class="w3-container" style="padding:128px 16px" id="projects">
-  <h3 class="w3-center">Abgeschlossene Projekte</h3>
-  <p class="w3-center w3-large">Klicken Sie auf ein Projekt, um mehr zu erfahren</p>
 
-  <!-- Projekt 1 -->
-  <button onclick="toggleContent('projekt1')" class="w3-button w3-block w3-light-grey w3-left-align w3-large w3-margin-top">📍 Projekt 1 – Reihenhaus in der Ostschweiz</button>
- <div id="projekt1" class="w3-container w3-hide w3-padding-16">
-  <p>Bei diesem Projekt wurde ein Einfamilienhaus mit Videoüberwachung, Smart-Lichtsteuerung und Zugangskontrolle ausgestattet. Besonderes Augenmerk lag auf lokaler Datenspeicherung.</p>
-  
-  <!-- Bilder nebeneinander -->
-  <div class="w3-row-padding w3-margin-top">
-    <div class="w3-half">
-      <img src="Bilder/projekt1.jpg" style="width:60%" class="w3-card" alt="Projekt 1 Bild 1">
-    </div>
-    <div class="w3-half">
-      <img src="Bilder/projekt1.1.jpg" style="width:60%" class="w3-card" alt="Projekt 1 Bild 2">
-    </div>
-  </div>
-</div>
-
-  <!-- Projekt 2 -->
-  <button onclick="toggleContent('projekt2')" class="w3-button w3-block w3-light-grey w3-left-align w3-large w3-margin-top">📍 Projekt 2 – Einfamilienhaus im Thurgau</button>
-  <div id="projekt2" class="w3-container w3-hide w3-padding-16">
-    <p>Für ein kleines Unternehmen wurde eine skalierbare Alarmanlage mit App-Anbindung und Fernzugriff umgesetzt. Die Lösung ist modular erweiterbar.</p>
-    <img src="Bilder/projekt2.jpg" style="width:20%; max-width:600px;" alt="Projekt 2 Beispiel" class="w3-margin-top w3-card">
-  </div>
-
-  <!-- Projekt 3 
-  <button onclick="toggleContent('projekt3')" class="w3-button w3-block w3-light-grey w3-left-align w3-large w3-margin-top">📍 Projekt 3 – Neubau SmartHome</button>
-  <div id="projekt3" class="w3-container w3-hide w3-padding-16">
-    <p>Komplettes SmartHome-Paket: Licht, Heizung, Rollläden, Überwachung – alles zentral gesteuert mit Loxone. Schulung und Support inklusive.</p>
-    <img src="Bilder/projekt3.jpg" style="width:60%; max-width:600px;" alt="Projekt 3 Beispiel" class="w3-margin-top w3-card">
-  </div>
-  -->
-</div>
 
 
 <!-- Footer -->
 <footer class="w3-black w3-padding-64">
-  <div class="w3-content" style="max-width:1200px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-
+  <div class="w3-content" style="max-width:1200px; position: relative;">
+    
     <!-- Linker Bereich: Firmeninfos -->
-    <div style="text-align: left;">
+   <div style="text-align: left; margin-left: 0; padding-left: 16px;">
       <h4 style="margin-bottom: 4px;">Baumann Secure Tech</h4>
       <p style="margin: 0;">Musterstrasse 12, 8500 Frauenfeld</p>
       <p style="margin: 0;">kontakt@bst.ch | +41 79 123 45 67</p>
-    </div>
+  </div>
 
-    <!-- Rechter Bereich: Logo -->
-    <div style="margin-top: 16px;">
-      <img src="Bilder/logo_reversed1.png" alt="BST Logo" class="footer-logo">
-    </div>
+  
 
   </div>
-</footer>
  <!-- 
     <div class="w3-xlarge w3-section">
     <i class="fa fa-instagram w3-hover-opacity"></i>

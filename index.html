@@ -8,42 +8,75 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
-
+/* === General Styles === */
 body, html {
   height: 100%;
   line-height: 1.8;
+  font-family: "Raleway", sans-serif;
 }
 
-/* Full height image header */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", sans-serif;
+}
+
+/* === Header Image === */
 .bgimg-1 {
-  background-position: center;
-  background-size: cover;
-  background-image: url("Bilder/frontbild.jpg");
+  background: url("Bilder/frontbild.jpg") center/cover no-repeat;
   min-height: 95%;
 }
 
+/* === Navbar === */
 .w3-bar .w3-button {
   padding: 16px;
 }
 
-/* Hotspot-Styling */
+.nav-link {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.navbar-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #333;
+  pointer-events: none;
+}
+
+.full-title { display: inline; }
+.short-title { display: none; font-size: 1.6rem; font-weight: bold; color: #333; }
+
+/* === Logo-Hotspot === */
+.logo-hotspot-container {
+  position: relative;
+  display: inline-block;
+  width: 400px;
+  max-width: 90%;
+}
+
+.logo-hotspot-container img {
+  width: 100%;
+  display: block;
+}
+
+/* === Hotspot + Tooltips === */
 .hotspot {
   position: absolute;
   width: 60px;
   height: 60px;
-  background-color: transparent;
-  border-radius: 50%;
   cursor: pointer;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  z-index: 10;
   transform: translate(-50%, -50%);
 }
 
-/* Tooltip per Hover sichtbar */
-.hotspot:hover .tooltip {
-  display: block;
-}
+.hotspot:hover .tooltip { display: block; }
 
-/* Tooltip-Grunddesign */
 .tooltip {
   display: none;
   position: absolute;
@@ -58,19 +91,46 @@ body, html {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Zentrale Navbar-Beschriftung */
-.navbar-center {
+.tooltip-text {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #333;
-  pointer-events: none; /* verhindert Kollision mit Links */
+  color: #000;
+  font-size: 30px;
+  background-color: transparent;
+  font-family: "Raleway", sans-serif;
+  white-space: nowrap;
+  box-shadow: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-/* Button mit Fancy Hover */
+.tooltip-text.visible,
+.hotspot:hover .tooltip-text {
+  opacity: 1;
+}
+
+.tooltip-wrapper {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.hotspot:hover .tooltip-wrapper,
+.tooltip-wrapper:hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Tooltip Positionen */
+.tooltip-text.left-offset { top: 0; left: -400%; transform: translate(-100%, -50%); }
+.tooltip-text.right-offset { top: 0%; left: 1100%; transform: translate(-100%, -50%); }
+.tooltip-text.left-offset2 { top: 60%; left: -300%; transform: translate(-100%, -50%); }
+.tooltip-text.right-offset2 { top: 55%; left: 1000%; transform: translate(-100%, -50%); }
+.tooltip-text.left-offset3 { top: 100%; left: -600%; transform: translate(-100%, -50%); }
+.tooltip-text.right-offset3 { top: 110%; left: 1100%; transform: translate(-100%, -50%); }
+.tooltip-text.center-left { top: 20%; left: -550%; transform: translate(-100%, -50%); }
+.tooltip-text.center-right { top: 20%; left: 1000%; transform: translate(-100%, -50%); }
+
+/* === Buttons === */
 .w3-button.fancy-hover {
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -83,14 +143,65 @@ body, html {
   box-shadow: 0 8px 16px rgba(0,0,0,0.3);
 }
 
-/* Logo je nach Bildschirmgröße anpassen */
-.full-title { display: inline; }
-.short-title { display: none; }
+/* === Leistungen === */
+.smart-home-section h3 { font-size: 2rem; font-weight: bold; }
+.smart-home-section p,
+.smart-home-section .w3-large { font-size: 1.4rem; }
 
-@media (max-width: 600px) {
+#leistungen h2 { font-size: 2.5rem; }
+#leistungen .w3-large { font-size: 1.5rem; }
+#leistungen h4 { font-size: 1.4rem; font-weight: bold; }
+#leistungen p { font-size: 1.2rem; }
+
+/* === Mobile Ziele === */
+.mobile-ziele {
+  display: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* === Media Queries === */
+@media (max-width: 1200px) {
   .full-title { display: none; }
   .short-title { display: inline; }
+
+  .mobile-ziele {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hotspot,
+  .hotspot .tooltip-text {
+    display: none !important;
+  }
+
+  footer .w3-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  footer .w3-content > div {
+    margin-top: 16px !important;
+  }
+
+  footer img {
+    height: 100px !important;
+  }
+
+  footer h4,
+  footer p {
+    font-size: 0.95rem !important;
+  }
+
+  .hover-hint {
+    display: none !important;
+  }
 }
+
+
 </style>
 </head>
 <script>
@@ -116,38 +227,37 @@ body, html {
 </script>
 <body>
 
-<!-- Navbar (sit on top) -->
-<!-- Navbar (sit on top) -->
+<!-- Navbar -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-card" id="myNavbar" style="position: relative;">
 
     <!-- Linke Seite -->
-    <a href="#home" class="w3-bar-item w3-button w3-wide">Startseite</a>
+    <a href="#home" class="w3-bar-item w3-button w3-wide nav-link">Startseite</a>
 
-    <!-- Zentrale Beschriftung -->
-   <div class="navbar-center">
+    <!-- Zentrale Beschriftung mit Logo / Mobile Text -->
+    <div class="navbar-center">
       <span class="full-title">Baumann Secure Tech</span>
       <span class="short-title">BST</span>
-  </div>  
+    </div>
 
     <!-- Rechte Seite -->
-    <div class="w3-right w3-hide-small">
-      <a href="about.html" class="w3-bar-item w3-button"><i class="fa fa-sitemap"></i> VORGEHEN</a>
-      <a href="team.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> TEAM</a>
-      <a href="work.html" class="w3-bar-item w3-button"><i class="fa fa-th"></i> PROJEKTE</a>
-      <a href="contact.html" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> KONTAKT</a>
+    <div class="w3-right w3-hide-small w3-hide-medium">
+      <a href="about.html" class="w3-bar-item w3-button nav-link"><i class="fa fa-sitemap"></i> VORGEHEN</a>
+      <a href="team.html" class="w3-bar-item w3-button nav-link"><i class="fa fa-user"></i> TEAM</a>
+      <a href="work.html" class="w3-bar-item w3-button nav-link"><i class="fa fa-th"></i> PROJEKTE</a>
+      <a href="contact.html" class="w3-bar-item w3-button nav-link"><i class="fa fa-envelope"></i> KONTAKT</a>
     </div>
 
     <!-- Burger-Menü für kleine Geräte -->
-    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
-      <i class="fa fa-bars"></i>
-    </a>
-
+   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large" onclick="w3_open()">
+  <i class="fa fa-bars"></i>
+</a>
   </div>
 </div>
 
+
 <!-- Sidebar on small screens when clicking the menu icon -->
-<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left  w3-hide-large" style="display:none" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Schliessen ×</a>
   <a href="about.html" class="w3-bar-item w3-button">Vorgehen</a>
   <a href="team.html" class="w3-bar-item w3-button">Team</a>
@@ -177,45 +287,100 @@ body, html {
   </div>
 </header>
 
+
+
+
+
+
+
+
+
+
+<!-- Logo mit Hover-Hotspots im grauen Bereich -->
 <div class="w3-container w3-padding-64 w3-light-grey" id="vision">
-  <h2 class="w3-center" style="font-size: 2.8rem; font-weight: bold; margin-bottom: 16px;">
+  <h2 class="w3-center" style="font-size: 2.8rem; font-weight: bold; margin-bottom: 32px;">
     Was wir mit BST erreichen möchten
   </h2>
 
-  <p class="w3-center" style="font-size: 1.5rem; max-width: 800px; margin: 0 auto;">
-    Baumann Secure Tech bringt Sicherheit und Komfort in Ihr Zuhause – individuell, modern und zuverlässig.
-  </p>
+  <div class="w3-center">
+    <div class="logo-hotspot-container" style="position: relative; display: inline-block;">
+      <img src="Bilder/logo_augen_transparent.png" alt="BST-Logo" id="logoImage" style="width: 400px; max-width: 90%;" />
 
-  <div class="w3-row-padding w3-center" style="margin-top:48px">
-    <div class="w3-col m6">
-      <ul class="w3-ul w3-large w3-center">
-        <li>✓ Ihr Eigenheim gegen Einbruch und Vandalismus schützen</li>
-        <li>✓ Sicherheitssysteme einfach und zentral steuern</li>
-        <li>✓ Zeitgemäss wohnen – mit Technik, die sich Ihrem Alltag anpasst</li>
-        <li>✓ Durch Automatisierung mehr Komfort im täglichen Leben gewinnen</li>
-        <li>✓ Transparenz über Geräte, Energieverbrauch und Zugriff behalten</li>
-      </ul>
-    </div>
-    <div class="w3-col m6">
-      <ul class="w3-ul w3-large w3-center">
-        <li>✓ Lokale, datenschutzfreundliche Lösungen statt Cloud-Zwang</li>
-        <li>✓ Vernetzte Geräte sicher und zuverlässig in Ihr Heim integrieren</li>
-        <li>✓ Unterstützung beim Einstieg ins Smart-Home – von A bis Z</li>
-        <li>✓ Beratung & Installation durch erfahrene Fachleute</li>
-        <li>✓ Alles aus einer Hand – ohne technisches Vorwissen notwendig</li>
-      </ul>
-    </div>
+      <div class="mobile-ziele w3-row-padding w3-margin-top">
+  <div class="w3-half w3-left-align">
+    <p>✓ Sicherheit durch Kameras</p>
+    <p>✓ Datenschutz ohne Cloud-Zwang</p>
+    <p>✓ Einbruchschutz</p>
+    <p>✓ Einfache Bedienung</p>
+  </div>
+  <div class="w3-half w3-left-align">
+    <p>✓ Komfort durch Automatisierung</p>
+    <p>✓ App-Steuerung von überall</p>
+    <p>✓ Energieeffiziente Lösungen</p>
+    <p>✓ Alles aus einer Hand</p>
   </div>
 </div>
+      <!-- Linkes oberes Auge -->
+      <div class="hotspot" style="top: 23%; left: 20%;">
+        <div class="tooltip-text left-offset">✓ Sicherheit durch Kameras</div>
+      </div>
+
+      <!-- Rechtes oberes Auge -->
+      <div class="hotspot" style="top: 23%; left: 70%;">
+        <div class="tooltip-text right-offset">✓ Komfort durch Automatisierung</div>
+      </div>
+
+      <!-- Linkes mittleres Auge -->
+      <div class="hotspot" style="top: 61%; left: 18%;">
+        <div class="tooltip-text left-offset2">✓ Datenschutz ohne Cloud-Zwang</div>
+      </div>
+
+      <!-- Rechtes mittleres Auge -->
+      <div class="hotspot" style="top: 65%; left: 73%;">
+        <div class="tooltip-text right-offset2">✓ App-Steuerung von überall</div>
+      </div>
+
+      <!-- Linkes unteres Auge -->
+      <div class="hotspot" style="top: 77%; left: 35%;">
+        <div class="tooltip-text left-offset3">✓ Einbruchschutz</div>
+      </div>
+
+      <!-- Rechtes unteres Auge -->
+      <div class="hotspot" style="top: 77%; left: 56%;">
+        <div class="tooltip-text right-offset3">✓ Energieeffiziente Lösungen</div>
+      </div>
+
+      <!-- Mitte links -->
+      <div class="hotspot" style="top: 45%; left: 35%;">
+        <div class="tooltip-text center-left">✓ Einfache Bedienung</div>
+      </div>
+
+      <!-- Mitte rechts -->
+      <div class="hotspot" style="top: 48%; left: 56%;">
+        <div class="tooltip-text center-right">✓ Alles aus einer Hand</div>
+      </div>
+    </div>
+  </div>
+
+
+  
+</div>
+
+
+
+
+
+
+
 
 
 <!-- Visualisierung: Smart Home Haus -->
 
 <!-- Smart Home mit Hover-Hotspots -->
-<div class="w3-container w3-padding-64 w3-white w3-center">
+<div class="w3-container w3-padding-64 w3-white w3-center smart-home-section">
   <h3 class="w3-center">Wie ein modernes Smart Home aussehen kann</h3>
   <p class="w3-large">Dieses Beispiel zeigt, welche Geräte zentral gesteuert und integriert werden können – übersichtlich und sicher verbunden mit dem Baumann Secure Tech.</p>
-  <h3 class="w3-large">Hovern Sie über die Geräte, um mehr zu erfahren.</h3>
+  <h3 class="w3-large hover-hint">Hovern Sie über die Geräte, um mehr zu erfahren.</h3>
 
   <div class="smarthome-container" style="position: relative; display: inline-block; margin-top: 32px;">
     <img src="Bilder/Smarthome.png" alt="3D-Smart-Home" class="w3-image w3-card-4" style="max-width:1000px; width:90%;">
@@ -323,10 +488,10 @@ body, html {
   </p>
 
   <div class="w3-bar w3-center">
-    <a href="about.html" class="w3-button w3-black w3-margin w3-round-large fancy-hover" style="width:200px;">Vorgehen</a>
-    <a href="team.html" class="w3-button w3-black w3-margin w3-round-large fancy-hover" style="width:200px;">Team</a>
-    <a href="work.html" class="w3-button w3-black w3-margin w3-round-large fancy-hover" style="width:200px;">Projekte</a>
-    <a href="contact.html" class="w3-button w3-black w3-margin w3-round-large fancy-hover" style="width:200px;">Kontakt</a>
+    <a href="about.html" class="w3-button w3-black w3-margin w3-round-large fancy-hover" style="width:200px; font-size: 1.3rem;">Vorgehen</a>
+    <a href="team.html" class="w3-button w3-black w3-margin w3-round-large fancy-hover" style="width:200px;font-size: 1.3rem;">Team</a>
+    <a href="work.html" class="w3-button w3-black w3-margin w3-round-large fancy-hover" style="width:200px;font-size: 1.3rem;">Projekte</a>
+    <a href="contact.html" class="w3-button w3-black w3-margin w3-round-large fancy-hover" style="width:200px;font-size: 1.3rem;">Kontakt</a>
   </div>
 </div>
 
@@ -345,23 +510,22 @@ body, html {
 
 <!-- Footer -->
 <footer class="w3-black w3-padding-64">
-  <div class="w3-content" style="max-width:1200px; position: relative;">
-    
+  <div class="w3-content" style="max-width:1200px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+
     <!-- Linker Bereich: Firmeninfos -->
-   <div style="text-align: left; margin-left: 0; padding-left: 16px;">
+    <div style="text-align: left;">
       <h4 style="margin-bottom: 4px;">Baumann Secure Tech</h4>
       <p style="margin: 0;">Musterstrasse 12, 8500 Frauenfeld</p>
       <p style="margin: 0;">kontakt@bst.ch | +41 79 123 45 67</p>
-  </div>
+    </div>
 
-    <!-- Zentrierter "Nach oben"-Button -->
-    <div style="position: absolute; left: 50%; transform: translateX(-50%); top: 0;">
-      <a href="#home" class="w3-button w3-light-grey">
-        <i class="fa fa-arrow-up w3-margin-right"></i>Nach oben
-      </a>
+    <!-- Rechter Bereich: Logo -->
+    <div style="margin-top: 16px;">
+      <img src="Bilder/logo_reversed1.png" alt="BST Logo" style="height: 130px;">
     </div>
 
   </div>
+</footer>
  <!-- 
     <div class="w3-xlarge w3-section">
     <i class="fa fa-instagram w3-hover-opacity"></i>
@@ -395,7 +559,38 @@ function w3_open() {
 function w3_close() {
     mySidebar.style.display = "none";
 }
+
 </script>
+
+
+<script> /* Augen */
+
+  const defaultImage = "Bilder/Augen/logo_geschlossen.png";
+
+  function swapImage(el) {
+    const img = document.getElementById("logoImage");
+    const newSrc = el.getAttribute("data-img");
+    img.src = newSrc;
+  }
+
+  function resetImage() {
+    const img = document.getElementById("logoImage");
+    img.src = defaultImage;
+  }
+    </script>
+  <script>
+  document.querySelectorAll('.hotspot').forEach(hotspot => {
+    hotspot.addEventListener('click', function () {
+      const tooltip = this.querySelector('.tooltip-text');
+      if (!tooltip.classList.contains('visible')) {
+        tooltip.classList.add('visible');
+      }
+      // Danach passiert nichts mehr – bleibt dauerhaft sichtbar
+    });
+  });
+</script>
+
+    
 
 </body>
 </html>

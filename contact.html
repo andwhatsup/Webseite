@@ -44,6 +44,83 @@
   .full-title { display: none; }
   .short-title { display: inline; }
 }
+.nav-link {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+
+
+
+
+@media (max-width: 1200px) {
+  footer .w3-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  footer .w3-content > div {
+    margin-top: 16px !important;
+  }
+
+  footer img {
+    height: 100px; /* Logo kleiner */
+  }
+
+  footer h4 {
+    font-size: 1.1rem; /* Überschrift kleiner */
+  }
+
+  footer p {
+    font-size: 0.95rem; /* Fließtext kleiner */
+  }
+}
+footer .w3-content {
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.navbar-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #333;
+  pointer-events: none;
+}
+
+/* Desktop: volles Logo anzeigen */
+.full-title { display: inline; }
+.short-title { display: none; font-size: 1.6rem; font-weight: bold; color: #333; }
+
+/* Ab 1200px Breite umschalten */
+@media (max-width: 1200px) {
+  .full-title { display: none; }
+  .short-title { display: inline; }
+}
+@media (max-width: 1200px) {
+  .w3-right {
+    display: none !important;
+  }
+
+  .w3-bar .w3-button.w3-hide-large.w3-hide-medium {
+    display: block !important;
+  }
+}
+.footer-logo {
+  height: 130px;
+  transition: height 0.3s ease;
+}
+@media (max-width: 1200px) {
+  .footer-logo {
+    height: 100px;
+  }
+}
   </style>
   
 </head>
@@ -77,7 +154,7 @@
   <div class="w3-bar w3-white w3-card" id="myNavbar" style="position: relative;">
 
     <!-- Linke Seite -->
-    <a href="index.html" class="w3-bar-item w3-button w3-wide">Startseite</a>
+    <a href="index.html" class="w3-bar-item w3-button w3-wide nav-link">Startseite</a>
 
      <!-- Zentrale Beschriftung -->
    <div class="navbar-center">
@@ -85,11 +162,12 @@
       <span class="short-title">BST</span>
   </div>  
     <!-- Rechte Seite -->
+     <!-- Rechte Seite -->
     <div class="w3-right w3-hide-small">
-      <a href="about.html" class="w3-bar-item w3-button"><i class="fa fa-sitemap"></i> VORGEHEN</a>
-      <a href="team.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> TEAM</a>
-      <a href="work.html" class="w3-bar-item w3-button"><i class="fa fa-th"></i> PROJEKTE</a>
-      <a href="contact.html" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> KONTAKT</a>
+      <a href="about.html" class="w3-bar-item w3-button nav-link"><i class="fa fa-sitemap"></i> VORGEHEN</a>
+      <a href="team.html" class="w3-bar-item w3-button nav-link"><i class="fa fa-user"></i> TEAM</a>
+      <a href="work.html" class="w3-bar-item w3-button nav-link"><i class="fa fa-th"></i> PROJEKTE</a>
+      <a href="contact.html" class="w3-bar-item w3-button nav-link"><i class="fa fa-envelope"></i> KONTAKT</a>
     </div>
 
     <!-- Burger-Menü für kleine Geräte -->
@@ -165,18 +243,22 @@
 
 <!-- Footer -->
 <footer class="w3-black w3-padding-64">
-  <div class="w3-content" style="max-width:1200px; position: relative;">
-    
+  <div class="w3-content" style="max-width:1200px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+
     <!-- Linker Bereich: Firmeninfos -->
-   <div style="text-align: left; margin-left: 0; padding-left: 16px;">
+    <div style="text-align: left;">
       <h4 style="margin-bottom: 4px;">Baumann Secure Tech</h4>
       <p style="margin: 0;">Musterstrasse 12, 8500 Frauenfeld</p>
       <p style="margin: 0;">kontakt@bst.ch | +41 79 123 45 67</p>
-  </div>
+    </div>
 
- 
+    <!-- Rechter Bereich: Logo -->
+    <div style="margin-top: 16px;">
+      <img src="Bilder/logo_reversed1.png" alt="BST Logo" class="footer-logo">
+    </div>
 
   </div>
+</footer>
  <!-- 
     <div class="w3-xlarge w3-section">
     <i class="fa fa-instagram w3-hover-opacity"></i>
