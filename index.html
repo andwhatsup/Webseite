@@ -21,18 +21,56 @@ h1, h2, h3, h4, h5, h6 {
 
 /* === Header Image === */
 .bgimg-1 {
-  background: url("Bilder/frontbild.jpg") center/cover no-repeat;
-  min-height: 95%;
+  background: url("Bilder/frontbild.jpg") center/cover fixed no-repeat;
+  min-height: 50%;  /* Changed from 95% to 50% */
+  position: relative;
+}
+
+/* Ensure content scrolls over the fixed background */
+.content-wrapper {
+  position: relative;
+  background-color: white;
+  z-index: 2;
+}
+
+/* Adjust header content to be visible over the background */
+.header-content {
+  position: relative;
+  z-index: 1;
 }
 
 /* === Navbar === */
 .w3-bar .w3-button {
   padding: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-link {
   font-size: 1.2rem;
   font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: #d90000;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  pointer-events: none;  /* Allows clicks to pass through */
+}
+
+.nav-link:hover:after {
+  width: 100%;
+}
+
+.w3-bar .w3-button:hover {
+  background-color: rgba(0, 0, 0, 0.1) !important;
 }
 
 .navbar-center {
@@ -201,7 +239,88 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Sticky Navbar */
+.w3-top {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
 
+.w3-top.scrolled {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero Section Overlay */
+.bgimg-1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+  z-index: 1;
+}
+
+.w3-display-container > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Vision Section Grid */
+.logo-hotspot-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Animations */
+.hotspot {
+  transition: transform 0.3s ease;
+}
+
+.hotspot:hover {
+  transform: scale(1.1);
+}
+
+/* Footer Social Icons */
+footer .social-icons i {
+  margin: 0 8px;
+  transition: color 0.3s ease;
+}
+
+footer .social-icons i:hover {
+  color: #888;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .logo-hotspot-container {
+    grid-template-columns: 1fr;
+  }
+
+  .w3-bar .nav-link {
+    font-size: 1rem;
+  }
+}
+
+/* Adjust header content positioning for smaller height */
+.w3-display-topmiddle {
+  padding-top: 32px !important;  /* Reduce top padding */
+}
+
+.w3-display-container.w3-text-white {
+  top: 30% !important;  /* Adjust from 40% to 30% */
+}
+
+/* Adjust title size for smaller header */
+.w3-text-white {
+  font-size: 6rem !important;  /* Reduced from 8rem */
+}
 </style>
 </head>
 <script>
@@ -224,6 +343,16 @@ h1, h2, h3, h4, h5, h6 {
   document.addEventListener('click', function () {
     document.querySelectorAll('.tooltip').forEach(t => t.style.display = 'none');
   });
+
+  // Navbar Scroll Effect
+  window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.w3-top');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
 </script>
 <body>
 
@@ -233,6 +362,7 @@ h1, h2, h3, h4, h5, h6 {
 
     <!-- Linke Seite -->
     <a href="#home" class="w3-bar-item w3-button w3-wide nav-link">Startseite</a>
+
 
     <!-- Zentrale Beschriftung mit Logo / Mobile Text -->
     <div class="navbar-center">
@@ -271,42 +401,82 @@ h1, h2, h3, h4, h5, h6 {
 <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
   <!-- HOMESHIELD Titel oben zentriert -->
   <div class="w3-display-topmiddle w3-center w3-padding-64">
-    <h1 class="w3-text-white" style="font-size: 8rem; font-weight: bold; margin: 0;">BST</h1>
+    <h1 class="w3-text-white" style="font-size: 8rem; font-weight: bold; margin: 0;"></h1>
   </div>
-
-  <!-- Zentrierter Untertitel -->
-  <div class="w3-display-container w3-text-white" style="position: absolute; top: 40%; width: 100%; text-align: center;">
-    <p style="font-size: 2.4rem; font-weight: 500; margin-top: 20px;">
-      Moderne Smart-Home-Technik für kleine Betriebe und Ihr Zuhause.
+   
+  <!-- Subtitle -->
+  <div class="w3-display-middle w3-center" style="top: 40%; ">
+    <p style="font-size: 2.4rem; font-weight: 500; margin: 0; color: #fff; margin-bottom: 20px">
+      Smart-Home Security für kleine Betriebe und Ihr Zuhause.
     </p>
   </div>
 
-  <!-- Social Icons unten links -->
-  <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <!-- Sub-Subtitle -->
+  <div class="w3-display-middle w3-center" style="top: 40%; ">
+    <p style="font-size: 2rem; font-weight: 500; margin: 0; color: #fff; margin-bottom: 120px">
+      Unsere Augen sind überall.
+    </p>
   </div>
+
+    <!-- Zentrales: Logo -->
+    <div class="w3-display-middle w3-center" style="margin-top: 20px; margin-bottom: 20px">
+      <img src="Bilder/BST_Logo_white2.png" alt="BST Logo" style="height: 130px;">
+    </div>
+
+  <style>
+    .scroll-arrow {
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .bounce-arrow {
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-15px);
+      }
+      60% {
+        transform: translateY(-7px);
+      }
+    }
+  </style>
+
+  <div class="content-wrapper" style="margin-bottom: 40px;"></div>
+  </div>
+      <!-- Call-to-Action Arrow -->
+  <div class="w3-display-top w3-center" style="top: 50% ">
+    <a href="#leistungen" class="scroll-arrow" style="margin-bottom: 40px">
+      <span style="color: #f7f7f7; font-size: 1.8rem; display: block">
+        Unsere Leistungen
+      </span>
+      <svg width="40" height="20" viewBox="0 0 40 20" class="bounce-arrow" style="margin-bottom: 20px">
+        <path d="M2,3 L20,17 L38,3" stroke="#f7f7f7" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
 </header>
 
-
-
-
-
-
-
-
-
+<div class="content-wrapper">
 
 <!-- Logo mit Hover-Hotspots im grauen Bereich -->
 <div class="w3-container w3-padding-64 w3-light-grey" id="vision">
+
+
   <h2 class="w3-center" style="font-size: 2.8rem; font-weight: bold; margin-bottom: 32px;">
-    Was wir mit BST erreichen möchten
+    Was Sie von unserem Team erwarten können
   </h2>
 
   <div class="w3-center">
     <div class="logo-hotspot-container" style="position: relative; display: inline-block;">
       <img src="Bilder/logo_augen_transparent.png" alt="BST-Logo" id="logoImage" style="width: 400px; max-width: 90%;" />
 
-      <div class="mobile-ziele w3-row-padding w3-margin-top">
+  <div class="mobile-ziele w3-row-padding w3-margin-top">
   <div class="w3-half w3-left-align">
     <p>✓ Sicherheit durch Kameras</p>
     <p>✓ Datenschutz ohne Cloud-Zwang</p>
@@ -521,9 +691,15 @@ h1, h2, h3, h4, h5, h6 {
 
     <!-- Rechter Bereich: Logo -->
     <div style="margin-top: 16px;">
-      <img src="Bilder/logo_reversed1.png" alt="BST Logo" style="height: 130px;">
+      <img src="Bilder/BST_Logo_white2.png" alt="BST Logo" style="height: 130px;">
     </div>
 
+    <!-- Social Media Icons -->
+    <div class="social-icons">
+      <i class="fa fa-instagram"></i>
+      <i class="fa fa-linkedin"></i>
+      <i class="fa fa-facebook"></i>
+    </div>
   </div>
 </footer>
  <!-- 
