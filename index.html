@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, h6 {
 /* === Header Image === */
 .bgimg-1 {
   background: url("Bilder/frontbild.jpg") center/cover no-repeat;
-  min-height: 95%;
+  min-height: 100%;
 }
 
 /* === Navbar === */
@@ -90,45 +90,73 @@ h1, h2, h3, h4, h5, h6 {
   transform: translate(-50%, -120%);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
+.w3-top    { z-index: 10000 !important; }
+#mySidebar { z-index: 11000 !important; }
 
-.tooltip-text {
-  position: absolute;
-  color: #000;
-  font-size: 30px;
-  background-color: transparent;
+/* Standardzustand: unsichtbar */
+/* Tooltip-Stil als Button */
+/* Look: weißer Button mit Rand, KEINE Positionierung hier */
+#vision .tooltip-text {
+  opacity: 0;
+  transition: opacity .25s ease;
   font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 6px;
+  padding: 8px 14px;
+  display: inline-block;
   white-space: nowrap;
-  box-shadow: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.tooltip-text.visible,
-.hotspot:hover .tooltip-text {
-  opacity: 1;
-}
-
-.tooltip-wrapper {
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 20;
   pointer-events: none;
 }
 
-.hotspot:hover .tooltip-wrapper,
-.tooltip-wrapper:hover {
+/* Pfeil */
+#vision .tooltip-text::after {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: -8px; transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #000;
+}
+#vision .tooltip-text::before {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: -6px; transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #fff;
+}
+
+/* Sichtbar bei Hover ODER Klick */
+#vision .hotspot:hover .tooltip-text,
+#vision .tooltip-text.visible {
   opacity: 1;
   pointer-events: auto;
 }
 
+/* Sichtbar im Click-Modus */
+.tooltip-text.visible {
+  opacity: 1;
+  transform: translate(-50%, -130%);
+  pointer-events: auto;
+}
+
 /* Tooltip Positionen */
-.tooltip-text.left-offset { top: 0; left: -400%; transform: translate(-100%, -50%); }
-.tooltip-text.right-offset { top: 0%; left: 1100%; transform: translate(-100%, -50%); }
-.tooltip-text.left-offset2 { top: 60%; left: -300%; transform: translate(-100%, -50%); }
-.tooltip-text.right-offset2 { top: 55%; left: 1000%; transform: translate(-100%, -50%); }
-.tooltip-text.left-offset3 { top: 100%; left: -600%; transform: translate(-100%, -50%); }
-.tooltip-text.right-offset3 { top: 110%; left: 1100%; transform: translate(-100%, -50%); }
-.tooltip-text.center-left { top: 20%; left: -550%; transform: translate(-100%, -50%); }
-.tooltip-text.center-right { top: 20%; left: 1000%; transform: translate(-100%, -50%); }
+.tooltip-text.left-offset { top: 0; left: 120%; transform: translate(-100%, -50%); }
+.tooltip-text.right-offset { top: 0%; left: 2000%; transform: translate(-100%, -50%); }
+.tooltip-text.left-offset2 { top: 60%; left: -170%; transform: translate(-100%, -50%); }
+.tooltip-text.right-offset2 { top: 55%; left: 2000%; transform: translate(-100%, -50%); }
+.tooltip-text.left-offset3 { top: 100%; left: -220%; transform: translate(-100%, -50%); }
+.tooltip-text.right-offset3 { top: 110%; left: 2000%; transform: translate(-100%, -50%); }
+.tooltip-text.center-left { top: 20%; left: -110%; transform: translate(-100%, -50%); }
+.tooltip-text.center-right { top: 20%; left: 2000%; transform: translate(-100%, -50%); }
 
 /* === Buttons === */
 .w3-button.fancy-hover {
@@ -199,46 +227,108 @@ h1, h2, h3, h4, h5, h6 {
   .hover-hint {
     display: none !important;
   }
+  .hotspot .tooltip { display: none; }           /* Baseline */
+.hotspot .tooltip.is-open { display: block; }  /* per Klick sichtbar */
+  
+
+
+
+
+/* Mobile Ziele: Kartenlayout */
+.mobile-ziele {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.mobile-ziele .ziel {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.mobile-ziele .icon {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  border: 2px solid #2e7d32;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  color: #2e7d32;
+}
+
+/* Tablet: zwei Spalten, Phone: eine Spalte */
+@media (max-width: 768px) {
+  .mobile-ziele { grid-template-columns: 1fr; }
+}
+
+/* Feintuning im bestehenden 1200px-Block */
+@media (max-width: 1200px) {
+  .mobile-ziele { margin-top: 12px; }
+  .mobile-ziele .ziel { font-size: 1rem; }
+}
+
+
+
+
+
 }
 
 
 </style>
-</head>
-<script>
-  // Funktion für Touch-Geräte
-  document.querySelectorAll('.hotspot').forEach(hotspot => {
-    hotspot.addEventListener('click', function (e) {
-      // Alle Tooltips ausblenden
-      document.querySelectorAll('.tooltip').forEach(t => t.style.display = 'none');
 
-      // Tooltip vom geklickten Element einblenden
-      const tooltip = this.querySelector('.tooltip');
-      if (tooltip) {
-        tooltip.style.display = 'block';
-        e.stopPropagation(); // Klick nicht weiterreichen
-      }
+</head>
+
+
+<script>
+// Klick-Logik nur für den Logo-Bereich (#vision) und nur dortige .tooltip
+const logoScope = document.querySelector('#vision');
+
+if (logoScope) {
+  // Klick auf Hotspot im Logo: genau EIN Tooltip öffnen
+  logoScope.querySelectorAll('.hotspot').forEach(hotspot => {
+    hotspot.addEventListener('click', function (e) {
+      // alle Logo-Tooltips zurücksetzen
+      logoScope.querySelectorAll('.tooltip').forEach(t => t.classList.remove('is-open'));
+      // eigenen Tooltip öffnen (per Klasse, kein inline-style)
+      const tt = this.querySelector('.tooltip');
+      if (tt) tt.classList.add('is-open');
+      e.stopPropagation();
     });
   });
 
-  // Klick außerhalb schließt Tooltip
+  // Klick ausserhalb: Logo-Tooltips schliessen
   document.addEventListener('click', function () {
-    document.querySelectorAll('.tooltip').forEach(t => t.style.display = 'none');
+    logoScope.querySelectorAll('.tooltip').forEach(t => t.classList.remove('is-open'));
   });
+  
+}
 </script>
+
+
+
+
+
+
+
 <body>
 
 <!-- Navbar -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-card" id="myNavbar" style="position: relative;">
 
-    <!-- Linke Seite -->
-    <a href="#home" class="w3-bar-item w3-button w3-wide nav-link">Startseite</a>
-
-    <!-- Zentrale Beschriftung mit Logo / Mobile Text -->
-    <div class="navbar-center">
-      <span class="full-title">Baumann Secure Tech</span>
-      <span class="short-title">BST</span>
-    </div>
+    <!-- Linke Seite: Jetzt „BST“ + mittige Schrift -->
+    <a href="#home" class="w3-bar-item w3-button nav-link">BAUMANN SECURE TECH</a>
 
     <!-- Rechte Seite -->
     <div class="w3-right w3-hide-small w3-hide-medium">
@@ -249,9 +339,10 @@ h1, h2, h3, h4, h5, h6 {
     </div>
 
     <!-- Burger-Menü für kleine Geräte -->
-   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large" onclick="w3_open()">
-  <i class="fa fa-bars"></i>
-</a>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+
   </div>
 </div>
 
@@ -307,18 +398,17 @@ h1, h2, h3, h4, h5, h6 {
       <img src="Bilder/logo_augen_transparent.png" alt="BST-Logo" id="logoImage" style="width: 400px; max-width: 90%;" />
 
       <div class="mobile-ziele w3-row-padding w3-margin-top">
-  <div class="w3-half w3-left-align">
-    <p>✓ Sicherheit durch Kameras</p>
-    <p>✓ Datenschutz ohne Cloud-Zwang</p>
-    <p>✓ Einbruchschutz</p>
-    <p>✓ Einfache Bedienung</p>
-  </div>
-  <div class="w3-half w3-left-align">
-    <p>✓ Komfort durch Automatisierung</p>
-    <p>✓ App-Steuerung von überall</p>
-    <p>✓ Energieeffiziente Lösungen</p>
-    <p>✓ Alles aus einer Hand</p>
-  </div>
+ <div class="mobile-ziele" aria-label="Ziele von BST">
+  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>Sicherheit durch Kameras</span></div>
+  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>Komfort durch Automatisierung</span></div>
+  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>Datenschutz</span></div>
+  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>App-Steuerung von überall</span></div>
+  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>Einbruchschutz</span></div>
+  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>Einfache Bedienung</span></div>
+  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>Energieeffiziente Lösungen</span></div>
+  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>Alles aus einer Hand</span></div>
+</div>
+
 </div>
       <!-- Linkes oberes Auge -->
       <div class="hotspot" style="top: 23%; left: 20%;">
@@ -332,7 +422,7 @@ h1, h2, h3, h4, h5, h6 {
 
       <!-- Linkes mittleres Auge -->
       <div class="hotspot" style="top: 61%; left: 18%;">
-        <div class="tooltip-text left-offset2">✓ Datenschutz ohne Cloud-Zwang</div>
+        <div class="tooltip-text left-offset2">✓ Datenschutz</div>
       </div>
 
       <!-- Rechtes mittleres Auge -->
@@ -383,7 +473,12 @@ h1, h2, h3, h4, h5, h6 {
   <h3 class="w3-large hover-hint">Hovern Sie über die Geräte, um mehr zu erfahren.</h3>
 
   <div class="smarthome-container" style="position: relative; display: inline-block; margin-top: 32px;">
-    <img src="Bilder/Smarthome.png" alt="3D-Smart-Home" class="w3-image w3-card-4" style="max-width:1000px; width:90%;">
+    <picture>
+  <!-- wenn der Hinweis verschwindet (<=1200px), nimm Hausbild2 -->
+  <source srcset="Bilder/Smarthome2.png" media="(max-width: 1200px)">
+  <!-- Standardbild für größere Screens -->
+  <img src="Bilder/Smarthome.png" alt="3D-Smart-Home" class="w3-image w3-card-4" style="max-width:1000px; width:90%;">
+</picture>
 
     <!-- Kamera ok -->
     <div class="hotspot" style="top: 50%; left: 12%;">
@@ -563,22 +658,23 @@ function w3_close() {
 </script>
 
 
-<script> /* Augen */
+<script>
+// Nur Tooltip-Texte im Logo-Bereich dauerhaft einblenden
+const logoScope2 = document.querySelector('#vision');
+if (logoScope2) {
+  logoScope2.querySelectorAll('.hotspot').forEach(hotspot => {
+    hotspot.addEventListener('click', function () {
+      const tooltipText = this.querySelector('.tooltip-text');
+      if (tooltipText && !tooltipText.classList.contains('visible')) {
+        tooltipText.classList.add('visible');
+      }
+      // Haus-Hotspots bleiben unberührt
+    });
+  });
+}
+</script>
 
-  const defaultImage = "Bilder/Augen/logo_geschlossen.png";
-
-  function swapImage(el) {
-    const img = document.getElementById("logoImage");
-    const newSrc = el.getAttribute("data-img");
-    img.src = newSrc;
-  }
-
-  function resetImage() {
-    const img = document.getElementById("logoImage");
-    img.src = defaultImage;
-  }
-    </script>
-  <script>
+<script>
   document.querySelectorAll('.hotspot').forEach(hotspot => {
     hotspot.addEventListener('click', function () {
       const tooltip = this.querySelector('.tooltip-text');
