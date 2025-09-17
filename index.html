@@ -61,7 +61,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 50%;
   width: 0;
   height: 3px;
-  background: #d90000;
+  background: #000000;
   transition: all 0.3s ease;
   transform: translateX(-50%);
   pointer-events: none;  /* Allows clicks to pass through */
@@ -406,6 +406,126 @@ footer .social-icons i:hover {
 .w3-text-white {
   font-size: 6rem !important;  /* Reduced from 8rem */
 }
+.device-btn {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.device-btn:hover {
+  background: #444;
+}
+
+.device-list-wrapper {
+  background: #f3f3f3;
+  border-radius: 14px;
+  padding: 12px 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  min-width: unset;
+  max-width: unset;
+  width: auto;
+}
+
+.device-list-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 24px;
+}
+
+.device-btn {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 0;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 140px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border: 2px solid #bbb;
+  font-weight: 600;
+}
+
+.device-btn:hover {
+  background: #444;
+  border-color: #888;
+}
+.device-list-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 24px;
+  justify-items: end;
+}
+
+.device-btn-col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+
+.device-desc {
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 0.25s, max-height 0.35s cubic-bezier(.4,0,.2,1), padding 0.25s;
+  overflow: hidden;
+  position: static;      /* <-- immer statisch, nicht absolut */
+  top: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+  margin: 8px 0 0 0;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  z-index: 10;
+  background: #fff;
+  color: #222;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  padding: 0 18px;
+  font-size: 1.08rem;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+  pointer-events: none;
+  display: block;
+}
+.device-desc.visible {
+  opacity: 1;
+  max-height: 200px;
+  padding: 12px 18px;
+  pointer-events: auto;
+}
+
+.device-btn-col {
+  position: relative;
+}
+
+
+
+
+.smarthome-img-container {
+  width: 600px !important;
+  max-width: 100% !important;
+  min-width: 320px !important;
+}
+.smarthome-img-container img {
+  width: 100% !important;
+  max-width: 600px !important;
+  min-width: 320px !important;
+}
 </style>
 
 </head>
@@ -458,16 +578,14 @@ if (logoScope) {
 <div class="w3-top">
   <div class="w3-bar w3-white w3-card" id="myNavbar" style="position: relative;">
 
-    <!-- Linke Seite: Jetzt „BST“ + mittige Schrift -->
-    <a href="#home" class="w3-bar-item w3-button nav-link">BAUMANN SECURE TECH</a>
+  
     <!-- Linke Seite -->
-    <a href="#home" class="w3-bar-item w3-button w3-wide nav-link">Startseite</a>
+     <a href="index.html" class="w3-bar-item w3-button nav-link">BAUMANN SECURE TECH</a>
 
 
     <!-- Zentrale Beschriftung mit Logo / Mobile Text -->
     <div class="navbar-center">
-      <span class="full-title">Baumann Secure Tech</span>
-      <span class="short-title">BST</span>
+         
     </div>
 
     <!-- Rechte Seite -->
@@ -565,91 +683,42 @@ if (logoScope) {
 
 <div class="content-wrapper">
 
-<!-- Logo mit Hover-Hotspots im grauen Bereich -->
-<div class="w3-container w3-padding-64 w3-light-grey" id="vision">
 
-
+<div class="w3-container w3-padding-64 w3-light-grey" id="vision" style="min-height: 480px;">
   <h2 class="w3-center" style="font-size: 2.8rem; font-weight: bold; margin-bottom: 32px;">
     Was Sie von unserem Team erwarten können
   </h2>
-
-  <div class="w3-center">
-    <div class="logo-hotspot-container" style="position: relative; display: inline-block;">
-      <img src="Bilder/logo_augen_transparent.png" alt="BST-Logo" id="logoImage" style="width: 400px; max-width: 90%;" />
-
-      <div class="mobile-ziele w3-row-padding w3-margin-top">
- <div class="mobile-ziele" aria-label="Ziele von BST">
-  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>Sicherheit durch Kameras</span></div>
-  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>Komfort durch Automatisierung</span></div>
-  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>Datenschutz</span></div>
-  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>App-Steuerung von überall</span></div>
-  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>Einbruchschutz</span></div>
-  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>Einfache Bedienung</span></div>
-  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>Energieeffiziente Lösungen</span></div>
-  <div class="ziel"><span class="icon"><i class="fa fa-check"></i></span><span>Alles aus einer Hand</span></div>
-</div>
-
-  <div class="mobile-ziele w3-row-padding w3-margin-top">
-  <div class="w3-half w3-left-align">
-    <p>✓ Sicherheit durch Kameras</p>
-    <p>✓ Datenschutz ohne Cloud-Zwang</p>
-    <p>✓ Einbruchschutz</p>
-    <p>✓ Einfache Bedienung</p>
-  </div>
-  <div class="w3-half w3-left-align">
-    <p>✓ Komfort durch Automatisierung</p>
-    <p>✓ App-Steuerung von überall</p>
-    <p>✓ Energieeffiziente Lösungen</p>
-    <p>✓ Alles aus einer Hand</p>
-  </div>
-</div>
-      <!-- Linkes oberes Auge -->
-      <div class="hotspot" style="top: 23%; left: 20%;">
-        <div class="tooltip-text left-offset">✓ Sicherheit durch Kameras</div>
+  <div class="w3-row-padding w3-center" style="max-width:1100px;margin:auto; min-height: 320px;">
+    <div class="feature-tile w3-col m3 s6 w3-padding">
+      <div class="w3-card w3-round-large w3-padding-32 w3-hover-shadow" style="min-height: 220px;">
+        <i class="fa fa-users w3-xxlarge w3-text-black"></i>
+        <h4>Alles aus einer Hand</h4>
+        <div class="feature-desc" style="display:none;">Von Beratung bis Support – wir kümmern uns um alles.</div>
       </div>
-
-      <!-- Rechtes oberes Auge -->
-      <div class="hotspot" style="top: 23%; left: 70%;">
-        <div class="tooltip-text right-offset">✓ Komfort durch Automatisierung</div>
+    </div>
+    <div class="feature-tile w3-col m3 s6 w3-padding">
+      <div class="w3-card w3-round-large w3-padding-32 w3-hover-shadow" style="min-height: 220px;">
+        <i class="fa fa-leaf w3-xxlarge w3-text-black"></i>
+        <h4>Energieeffiziente Lösungen</h4>
+        <div class="feature-desc" style="display:none;">Sparen Sie Strom und Kosten mit smarter Technik.</div>
       </div>
-
-      <!-- Linkes mittleres Auge -->
-      <div class="hotspot" style="top: 61%; left: 18%;">
-        <div class="tooltip-text left-offset2">✓ Datenschutz</div>
+    </div>
+    <div class="feature-tile w3-col m3 s6 w3-padding">
+      <div class="w3-card w3-round-large w3-padding-32 w3-hover-shadow" style="min-height: 220px;">
+        <i class="fa fa-mobile w3-xxlarge w3-text-black"></i>
+        <h4>Einfache Bedienung</h4>
+        <div class="feature-desc" style="display:none;">Intuitive Steuerung per App oder Sprache.</div>
       </div>
-
-      <!-- Rechtes mittleres Auge -->
-      <div class="hotspot" style="top: 65%; left: 73%;">
-        <div class="tooltip-text right-offset2">✓ App-Steuerung von überall</div>
-      </div>
-
-      <!-- Linkes unteres Auge -->
-      <div class="hotspot" style="top: 77%; left: 35%;">
-        <div class="tooltip-text left-offset3">✓ Einbruchschutz</div>
-      </div>
-
-      <!-- Rechtes unteres Auge -->
-      <div class="hotspot" style="top: 77%; left: 56%;">
-        <div class="tooltip-text right-offset3">✓ Energieeffiziente Lösungen</div>
-      </div>
-
-      <!-- Mitte links -->
-      <div class="hotspot" style="top: 45%; left: 35%;">
-        <div class="tooltip-text center-left">✓ Einfache Bedienung</div>
-      </div>
-
-      <!-- Mitte rechts -->
-      <div class="hotspot" style="top: 48%; left: 56%;">
-        <div class="tooltip-text center-right">✓ Alles aus einer Hand</div>
+    </div>
+    <div class="feature-tile w3-col m3 s6 w3-padding">
+      <div class="w3-card w3-round-large w3-padding-32 w3-hover-shadow" style="min-height: 220px;">
+        <i class="fa fa-shield w3-xxlarge w3-text-black"></i>
+        <h4>Einbruchschutz</h4>
+        <div class="feature-desc" style="display:none;">Mehr Sicherheit für Ihr Zuhause.</div>
       </div>
     </div>
   </div>
-
-
-  
 </div>
-
-
 
 
 
@@ -659,68 +728,83 @@ if (logoScope) {
 
 <!-- Visualisierung: Smart Home Haus -->
 
-<!-- Smart Home mit Hover-Hotspots -->
 <div class="w3-container w3-padding-64 w3-white w3-center smart-home-section">
   <h3 class="w3-center">Wie ein modernes Smart Home aussehen kann</h3>
   <p class="w3-large">Dieses Beispiel zeigt, welche Geräte zentral gesteuert und integriert werden können – übersichtlich und sicher verbunden mit dem Baumann Secure Tech.</p>
-  <h3 class="w3-large hover-hint">Hovern Sie über die Geräte, um mehr zu erfahren.</h3>
+  <h3 class="w3-large hover-hint">Klicken Sie auf ein Gerät, um mehr zu erfahren.</h3>
 
-  <div class="smarthome-container" style="position: relative; display: inline-block; margin-top: 32px;">
-    <picture>
-  <!-- wenn der Hinweis verschwindet (<=1200px), nimm Hausbild2 -->
-  <source srcset="Bilder/Smarthome2.png" media="(max-width: 1200px)">
-  <!-- Standardbild für größere Screens -->
-  <img src="Bilder/Smarthome.png" alt="3D-Smart-Home" class="w3-image w3-card-4" style="max-width:1000px; width:90%;">
-</picture>
-
-    <!-- Kamera ok -->
-    <div class="hotspot" style="top: 50%; left: 12%;">
-      <span class="tooltip">Aussenkamera mit Bewegungserkennung</span>
+  <div class="smarthome-flex" style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 32px;">
+    <!-- Linke Buttons -->
+    <div class="device-list-wrapper" style="background: #f3f3f3; border-radius: 18px; padding: 24px 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.07); display: flex; flex-direction: column; gap: 18px; align-items: flex-end;">
+      <div class="device-btn-col">
+        <button class="device-btn" data-device="kamera">Kamera</button>
+        <div class="device-desc device-desc-left" id="desc-kamera"></div>
+      </div>
+      <div class="device-btn-col">
+        <button class="device-btn" data-device="staubsauger">Staubsauger</button>
+        <div class="device-desc device-desc-left" id="desc-staubsauger"></div>
+      </div>
+      <div class="device-btn-col">
+        <button class="device-btn" data-device="fernseher">Fernseher</button>
+        <div class="device-desc device-desc-left" id="desc-fernseher"></div>
+      </div>
+      <div class="device-btn-col">
+        <button class="device-btn" data-device="solarpanels">Solarpanels</button>
+        <div class="device-desc device-desc-left" id="desc-solarpanels"></div>
+      </div>
     </div>
 
-    <!-- Staubsauger ok -->
-    <div class="hotspot" style="top: 83%; left: 19%;">
-      <span class="tooltip">Automatischer Saugroboter – App-gesteuert</span>
+    <!-- Bild in der Mitte -->
+    <div class="smarthome-img-container" style="position: relative; display: inline-block; width: 600px; max-width: 90%;">
+      <img src="Bilder/Smarthome.png" alt="3D-Smart-Home" class="w3-image w3-card-4" style="width: 100%; max-width: 600px;">
+      <div class="hotspot" id="hs-kamera" style="top: 50%; left: 12%;">
+        <span class="tooltip">Aussenkamera mit Bewegungserkennung</span>
+      </div>
+      <div class="hotspot" id="hs-staubsauger" style="top: 83%; left: 19%;">
+        <span class="tooltip">Automatischer Saugroboter – App-gesteuert</span>
+      </div>
+      <div class="hotspot" id="hs-tuerkamera" style="top: 53%; left: 87%;">
+        <span class="tooltip">Sichere Eingangskontrolle mit Kamera, Live-Stream und Aufzeichnung</span>
+      </div>
+      <div class="hotspot" id="hs-solarpanels" style="top: 23%; left: 48%;">
+        <span class="tooltip">Energieproduktion live überwachen und Verbrauch automatisch optimieren</span>
+      </div>
+      <div class="hotspot" id="hs-storen" style="top: 45%; left: 78%;">
+        <span class="tooltip">Automatische Storensteuerung – bequem per App oder Zeitplan</span>
+      </div>
+      <div class="hotspot" id="hs-server" style="top: 78%; left: 51%;">
+        <span class="tooltip">Zentrale Steuerungseinheit – lokal, sicher und jederzeit erweiterbar</span>
+      </div>
+      <div class="hotspot" id="hs-tuere" style="top: 65%; left: 77%;">
+        <span class="tooltip">Elektronisches Türschloss mit Fingerabdruck</span>
+      </div>
+      <div class="hotspot" id="hs-fernseher" style="top: 57%; left: 37%;">
+        <span class="tooltip">Smart-TV mit Sprachsteuerung und zentraler Medienverwaltung</span>
+      </div>
     </div>
 
-    <!-- Türkamera ok -->
-    <div class="hotspot" style="top: 53%; left: 87%;">
-      <span class="tooltip">Sichere Eingangskontrolle mit Kamera, Live-Stream und Aufzeichnung</span>
+    <!-- Rechte Buttons -->
+    <div class="device-list-wrapper" style="background: #f3f3f3; border-radius: 18px; padding: 24px 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.07); display: flex; flex-direction: column; gap: 18px; align-items: flex-start;">
+      <div class="device-btn-col">
+        <button class="device-btn" data-device="tuerkamera">Türkamera</button>
+        <div class="device-desc device-desc-right" id="desc-tuerkamera"></div>
+      </div>
+      <div class="device-btn-col">
+        <button class="device-btn" data-device="storen">Storen</button>
+        <div class="device-desc device-desc-right" id="desc-storen"></div>
+      </div>
+      <div class="device-btn-col">
+        <button class="device-btn" data-device="server">Server</button>
+        <div class="device-desc device-desc-right" id="desc-server"></div>
+      </div>
+      <div class="device-btn-col">
+        <button class="device-btn" data-device="tuere">Türe</button>
+        <div class="device-desc device-desc-right" id="desc-tuere"></div>
+      </div>
     </div>
-
-     <!-- Solarpanels ok-->
-    <div class="hotspot" style="top: 23%; left: 48%;">
-      <span class="tooltip">Energieproduktion live überwachen und Verbrauch automatisch optimieren</span>
-    </div>
-
-       <!-- Storen ok -->
-    <div class="hotspot" style="top: 45%; left: 78%;">
-      <span class="tooltip">Automatische Storensteuerung – bequem per App oder Zeitplan</span>
-    </div>
-
-       <!-- Server ok-->
-    <div class="hotspot" style="top: 78%; left: 51%;">
-      <span class="tooltip">Zentrale Steuerungseinheit – lokal, sicher und jederzeit erweiterbar</span>
-    </div>
-    
-        <!-- Türe ok -->
-    <div class="hotspot" style="top: 65%; left: 77%;">
-      <span class="tooltip">Elektronisches Türschloss mit Fingerabdruck</span>
-    </div>
-
-        <!-- Fernseher -->
-    <div class="hotspot" style="top: 57%; left: 37%;">
-      <span class="tooltip">Smart-TV mit Sprachsteuerung und zentraler Medienverwaltung</span>
-    </div>
-
-    <!-- Mediaserver -->
-    <div class="hotspot" style="top: 65%; left: 46%;">
-      <span class="tooltip">Mediaserver für lokale Inhalte und Streaming – auch offline nutzbar</span>
-    </div>
-
-
   </div>
 </div>
+
 
 
 <!-- Unsere Leistungen -->
@@ -883,9 +967,62 @@ if (logoScope2) {
       // Danach passiert nichts mehr – bleibt dauerhaft sichtbar
     });
   });
+  
+</script>
+<script>
+// Geräte-Beschreibungen
+const deviceDescriptions = {
+  kamera: "Aussenkamera mit Bewegungserkennung",
+  staubsauger: "Automatischer Saugroboter – App-gesteuert",
+  tuerkamera: "Sichere Eingangskontrolle mit Kamera, Live-Stream und Aufzeichnung",
+  solarpanels: "Energieproduktion live überwachen und Verbrauch automatisch optimieren",
+  storen: "Automatische Storensteuerung – bequem per App oder Zeitplan",
+  server: "Zentrale Steuerungseinheit – lokal, sicher und jederzeit erweiterbar",
+  tuere: "Elektronisches Türschloss mit Fingerabdruck",
+  fernseher: "Smart-TV mit Sprachsteuerung und zentraler Medienverwaltung"
+};
+
+// Alle Beschreibungen ausblenden
+function hideAllDeviceDescs() {
+  document.querySelectorAll('.device-desc').forEach(d => {
+    d.classList.remove('visible');
+    // Text bleibt erhalten, damit Animation sauber läuft
+  });
+}
+
+// Button-Klick zeigt Beschreibung mit Animation
+document.querySelectorAll('.device-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    hideAllDeviceDescs();
+    const descId = 'desc-' + btn.dataset.device;
+    const descElem = document.getElementById(descId);
+    if (descElem) {
+      descElem.textContent = deviceDescriptions[btn.dataset.device] || '';
+      descElem.classList.add('visible');
+    }
+    e.stopPropagation();
+  });
+});
+
+// Klick ausserhalb blendet Beschreibungen aus
+document.addEventListener('click', function(e) {
+  if (!e.target.classList.contains('device-btn')) {
+    hideAllDeviceDescs();
+  }
+});
 </script>
 
-    
+<script>
+document.querySelectorAll('.feature-tile').forEach(tile => {
+  tile.addEventListener('mouseenter', () => {
+    tile.querySelector('.feature-desc').style.display = 'block';
+  });
+  tile.addEventListener('mouseleave', () => {
+    tile.querySelector('.feature-desc').style.display = 'none';
+  });
+});
+</script>
 
-</body>
+
+  </body>
 </html>

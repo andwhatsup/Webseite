@@ -48,6 +48,31 @@
   font-size: 1.2rem;
   font-weight: 600;
 }
+/* ...existing code... */
+.nav-link {
+  font-size: 1.2rem;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: #000000;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.nav-link:hover:after {
+  width: 100%;
+}
+/* ...existing code... */
   </style>
 </head>
 <body>

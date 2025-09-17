@@ -11,13 +11,15 @@
     body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     body, html {height: 100%; line-height: 1.8;}
     .w3-bar .w3-button {padding: 16px;}
-    .bgimg-3 {
-      background-image: url("Bilder/Projekte.jpg"); /* dein Startbild hier */
-      min-height: 40vh;  /* Changed from 50vh to 40vh for a more compact look */
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
+  .bgimg-3 {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), /* dunkler Overlay */
+    url("Bilder/Projekte.jpg");
+  min-height: 60vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
     .w3-sidebar {
   position: fixed;
   top: 0;
@@ -114,8 +116,34 @@ footer .w3-content {
     height: 100px;
   }
 }
+/* ...existing code... */
+.nav-link {
+  font-size: 1.2rem;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: #000000;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.nav-link:hover:after {
+  width: 100%;
+}
+/* ...existing code... */
   </style>
 </head>
+
 <body>
 
 <!-- Navbar -->
@@ -209,9 +237,15 @@ footer .w3-content {
 
     <!-- Rechter Bereich: Logo -->
     <div style="margin-top: 16px;">
-      <img src="Bilder/logo_reversed1.png" alt="BST Logo" class="footer-logo">
+      <img src="Bilder/BST_Logo_white2.png" alt="BST Logo" style="height: 130px;">
     </div>
 
+    <!-- Social Media Icons -->
+    <div class="social-icons">
+      <i class="fa fa-instagram"></i>
+      <i class="fa fa-linkedin"></i>
+      <i class="fa fa-facebook"></i>
+    </div>
   </div>
 </footer>
  <!-- 
