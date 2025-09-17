@@ -406,33 +406,23 @@ footer .social-icons i:hover {
 .w3-text-white {
   font-size: 6rem !important;  /* Reduced from 8rem */
 }
-.device-btn {
-  background: #222;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  margin-bottom: 4px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.device-btn:hover {
-  background: #444;
-}
+
 
 .device-list-wrapper {
-  background: #f3f3f3;
-  border-radius: 14px;
-  padding: 12px 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  align-items: center;
-  min-width: unset;
-  max-width: unset;
-  width: auto;
+  gap: 18px;
+  align-items: stretch;
+  width: 160px;
+  min-width: 160px;
+  max-width: 160px;
+  min-height: 380px;
+  justify-content: center;
+  position: relative;
 }
 
 .device-list-grid {
@@ -454,6 +444,7 @@ footer .social-icons i:hover {
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   border: 2px solid #bbb;
   font-weight: 600;
+  
 }
 
 .device-btn:hover {
@@ -478,19 +469,12 @@ footer .social-icons i:hover {
 .device-desc {
   opacity: 0;
   max-height: 0;
+  min-height: 0;
   transition: opacity 0.25s, max-height 0.35s cubic-bezier(.4,0,.2,1), padding 0.25s;
   overflow: hidden;
-  position: static;      /* <-- immer statisch, nicht absolut */
-  top: auto;
-  left: auto;
-  right: auto;
-  transform: none;
+  position: static;
   margin: 8px 0 0 0;
   width: 100%;
-  min-width: 0;
-  max-width: 100%;
-  box-sizing: border-box;
-  z-index: 10;
   background: #fff;
   color: #222;
   border-radius: 8px;
@@ -501,12 +485,20 @@ footer .social-icons i:hover {
   text-align: left;
   pointer-events: none;
   display: block;
+  box-sizing: border-box;
+
+   width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
+
 .device-desc.visible {
   opacity: 1;
-  max-height: 200px;
+  max-height: 500px;     /* groß genug für den längsten Text */
   padding: 12px 18px;
   pointer-events: auto;
+  display: block;
 }
 
 .device-btn-col {
@@ -526,9 +518,109 @@ footer .social-icons i:hover {
   max-width: 600px !important;
   min-width: 320px !important;
 }
+/* Standard: Mobile-Liste ausblenden, Buttons/Animation sichtbar */
+.device-list-mobile { display: none; }
+.smarthome-flex { display: flex; }
+.device-list-wrapper { display: flex; }
+.device-btn, .device-desc { display: block; }
+
+/* Ab Tablet-Größe (Burger-Icon erscheint): Nur noch die Liste zeigen */
+@media (max-width: 992px) {
+  .smarthome-flex { display: none !important; }
+  .device-list-mobile {
+    display: block !important;
+    margin: 32px auto 0 auto;
+    max-width: 500px;
+    background: #f7f7f7;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 32px 18px;
+    font-size: 1.15rem;
+  }
+  .device-list-mobile ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .device-list-mobile li {
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .device-list-mobile li:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Mobile: Bild oben, moderne Geräte-Liste darunter */
+.smarthome-mobile-view { display: none; }
+@media (max-width: 992px) {
+  .smarthome-flex { display: none !important; }
+  .device-list-mobile { display: none !important; }
+  .smarthome-mobile-view {
+    display: block !important;
+    margin: 0 auto 32px auto;
+    max-width: 420px;
+    padding: 0 8px;
+  }
+  .smarthome-mobile-img img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 18px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+  }
+  .device-list-mobile-modern {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .device-list-mobile-modern li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 16px 18px;
+    font-size: 1.08rem;
+    border: 1px solid #ececec;
+    transition: box-shadow 0.2s;
+  }
+  .device-list-mobile-modern li:hover {
+    box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+  }
+  .device-icon {
+    font-size: 1.7rem;
+    color: #222;
+    flex-shrink: 0;
+    margin-top: 2px;
+    width: 32px;
+    text-align: center;
+  }
+  .device-desc-mobile {
+    font-size: 1rem;
+    color: #444;
+    margin-top: 2px;
+  }
+}
+
+@media (max-width: 992px) {
+  .device-list-mobile-modern.device-list-mobile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .device-list-mobile-modern.device-list-mobile-grid li {
+    margin: 0;
+  }
+}
 </style>
 
 </head>
+
 
 
 <script>
@@ -565,7 +657,6 @@ if (logoScope) {
     }
   });
 </script>
-
 
 
 
@@ -735,7 +826,7 @@ if (logoScope) {
 
   <div class="smarthome-flex" style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 32px;">
     <!-- Linke Buttons -->
-    <div class="device-list-wrapper" style="background: #f3f3f3; border-radius: 18px; padding: 24px 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.07); display: flex; flex-direction: column; gap: 18px; align-items: flex-end;">
+    <div class="device-list-wrapper" >
       <div class="device-btn-col">
         <button class="device-btn" data-device="kamera">Kamera</button>
         <div class="device-desc device-desc-left" id="desc-kamera"></div>
@@ -780,11 +871,12 @@ if (logoScope) {
       </div>
       <div class="hotspot" id="hs-fernseher" style="top: 57%; left: 37%;">
         <span class="tooltip">Smart-TV mit Sprachsteuerung und zentraler Medienverwaltung</span>
-      </div>
+      </div>      
     </div>
 
-    <!-- Rechte Buttons -->
-    <div class="device-list-wrapper" style="background: #f3f3f3; border-radius: 18px; padding: 24px 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.07); display: flex; flex-direction: column; gap: 18px; align-items: flex-start;">
+ 
+     <!-- Rechte Buttons -->
+    <div class="device-list-wrapper">
       <div class="device-btn-col">
         <button class="device-btn" data-device="tuerkamera">Türkamera</button>
         <div class="device-desc device-desc-right" id="desc-tuerkamera"></div>
@@ -803,6 +895,70 @@ if (logoScope) {
       </div>
     </div>
   </div>
+</div>
+<!-- Geräte-Visualisierung für Mobile -->
+<div class="smarthome-mobile-view" style="display:none;">
+  <div class="smarthome-mobile-img" style="text-align:center; margin-bottom: 24px;">
+    <img src="Bilder/Smarthome.png" alt="3D-Smart-Home" style="max-width: 320px; width: 90%; border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.10);">
+  </div>
+  <ul class="device-list-mobile-modern device-list-mobile-grid">
+    <li>
+      <span class="device-icon"><i class="fa fa-video-camera"></i></span>
+      <div>
+        <strong>Kamera</strong>
+        <div class="device-desc-mobile">Aussenkamera mit Bewegungserkennung</div>
+      </div>
+    </li>
+    <li>
+      <span class="device-icon"><i class="fa fa-android"></i></span>
+      <div>
+        <strong>Staubsauger</strong>
+        <div class="device-desc-mobile">Automatischer Saugroboter – App-gesteuert</div>
+      </div>
+    </li>
+    <li>
+      <span class="device-icon"><i class="fa fa-television"></i></span>
+      <div>
+        <strong>Fernseher</strong>
+        <div class="device-desc-mobile">Smart-TV mit Sprachsteuerung und zentraler Medienverwaltung</div>
+      </div>
+    </li>
+    <li>
+      <span class="device-icon"><i class="fa fa-sun-o"></i></span>
+      <div>
+        <strong>Solarpanels</strong>
+        <div class="device-desc-mobile">Energieproduktion live überwachen und Verbrauch automatisch optimieren</div>
+      </div>
+    </li>
+    <li>
+      <span class="device-icon"><i class="fa fa-eye"></i></span>
+      <div>
+        <strong>Türkamera</strong>
+        <div class="device-desc-mobile">Sichere Eingangskontrolle mit Kamera, Live-Stream und Aufzeichnung</div>
+      </div>
+    </li>
+    <li>
+      <span class="device-icon"><i class="fa fa-sliders"></i></span>
+      <div>
+        <strong>Storen</strong>
+        <div class="device-desc-mobile">Automatische Storensteuerung – bequem per App oder Zeitplan</div>
+      </div>
+    </li>
+    <li>
+      <span class="device-icon"><i class="fa fa-server"></i></span>
+      <div>
+        <strong>Server</strong>
+        <div class="device-desc-mobile">Zentrale Steuerungseinheit – lokal, sicher und jederzeit erweiterbar</div>
+      </div>
+    </li>
+    <li>
+      <span class="device-icon"><i class="fa fa-lock"></i></span>
+      <div>
+        <strong>Türe</strong>
+        <div class="device-desc-mobile">Elektronisches Türschloss mit Fingerabdruck</div>
+      </div>
+    </li>
+  </ul>
 </div>
 
 
@@ -912,6 +1068,10 @@ if (logoScope) {
   -->
  </footer>
  
+
+
+
+
 <script>
 // Modal Image Gallery
 function onClick(element) {
@@ -1022,6 +1182,7 @@ document.querySelectorAll('.feature-tile').forEach(tile => {
   });
 });
 </script>
+
 
 
   </body>
