@@ -772,6 +772,26 @@ footer .social-icons i:hover {
   }
 }
 
+@media (max-width: 768px) {
+  .bgimg-1 {
+    background-position: center;
+    background-size: cover;
+    background-attachment: scroll;
+    min-height: 75vh; /* besser als fix in % */
+  }
+}
+
+@media (max-width: 768px) {
+  .feature-tile .w3-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    min-height: 260px; /* Einheitliche Höhe für Mobile */
+  }
+}
+
 </style>
 
 </head>
