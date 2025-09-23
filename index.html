@@ -624,6 +624,154 @@ footer .social-icons i:hover {
 #vision .w3-card {
   background: #ffffff !important;
     }
+
+  /*Sidebar */
+
+  .custom-sidebar {
+  position: fixed;
+  top: 60px;
+  left: 24px;
+  z-index: 11000 !important;
+  background: none !important;
+  box-shadow: none !important;
+  width: auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+  animation: sidebar-fade-in 0.4s;
+}
+
+@keyframes sidebar-fade-in {
+  from { opacity: 0; transform: translateX(-40px);}
+  to   { opacity: 1; transform: translateX(0);}
+}
+
+.sidebar-btn {
+  background: #111;
+  color: #fff !important;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 32px;
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  text-align: left;
+  min-width: 160px;
+  display: block;
+  text-decoration: none;
+}
+.sidebar-btn:hover, .sidebar-btn:focus {
+  background: #333;
+  color: #fff !important;
+  transform: translateX(6px) scale(1.04);
+}
+.close-btn {
+  background: #fff;
+  color: #111 !important;
+  border: 2px solid #111;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.close-btn:hover {
+  background: #eee;
+  color: #111 !important;
+}
+
+
+/* mobile änderungen*/ 
+@media (max-width: 992px) {
+  .feature-desc {
+    display: block !important;
+    margin-top: 12px;
+    font-size: 1.05rem;
+    color: #444;
+  }
+
+  .feature-tile .w3-card {
+    min-height: auto !important; /* Karte passt sich an */
+  }
+}
+
+
+@media (max-width: 992px) {
+  .smarthome-circle-diagram {
+    display: flex !important;
+    justify-content: center;
+    margin: 32px auto;
+    max-width: 320px;
+    position: relative;
+  }
+
+  .diagram-center {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background: #f7f7f7;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0,0,0,0.08);
+  }
+
+  .center-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #111;
+    border: 2px solid #111;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .center-label {
+    font-size: 0.8rem;
+    line-height: 1.2;
+    margin-top: 4px;
+  }
+
+  .connector-lines {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .connector-lines line {
+    stroke: #888;
+    stroke-width: 1.5;
+  }
+
+  .device-item {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-size: 0.85rem;
+    text-align: center;
+    width: 60px;
+    color: #222;
+  }
+
+  .device-item i {
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+    display: block;
+  }
+}
+
 </style>
 
 </head>
@@ -674,7 +822,8 @@ if (logoScope) {
 
 <!-- Navbar -->
 <div class="w3-top">
-  <div class="w3-bar w3-white w3-card" id="myNavbar" style="position: relative;">
+  <div class="w3-bar w3-white w3-card" id="myNavbar" style="position: flexible; top: 0; width: 100%; z-index: 1000;">
+
 
   
     <!-- Linke Seite -->
@@ -704,12 +853,12 @@ if (logoScope) {
 
 
 <!-- Sidebar on small screens when clicking the menu icon -->
-<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left  w3-hide-large" style="display:none" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Schliessen ×</a>
-  <a href="about.html" class="w3-bar-item w3-button">Vorgehen</a>
-  <a href="team.html" class="w3-bar-item w3-button">Team</a>
-  <a href="work.html" class="w3-bar-item w3-button">Projekte</a>
-  <a href="contact.html" class="w3-bar-item w3-button">Kontakt</a>
+<nav id="mySidebar" class="custom-sidebar" style="display:none;">
+  <a href="javascript:void(0)" onclick="w3_close()" class="sidebar-btn close-btn">Schliessen ×</a>
+  <a href="about.html" class="sidebar-btn close-btn">Vorgehen</a>
+  <a href="team.html" class="sidebar-btn close-btn">Team</a>
+  <a href="work.html" class="sidebar-btn close-btn">Projekte</a>
+  <a href="contact.html" class="sidebar-btn close-btn">Kontakt</a>
 </nav>
 
 
@@ -903,12 +1052,65 @@ if (logoScope) {
     </div>
   </div>
 </div>
-<!-- Geräte-Visualisierung für Mobile -->
+
+<!-- Moible -->
 <div class="smarthome-mobile-view" style="display:none;">
   <div class="smarthome-mobile-img" style="text-align:center; margin-bottom: 24px;">
     <img src="Bilder/Smarthome.png" alt="3D-Smart-Home" style="max-width: 320px; width: 90%; border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.10);">
   </div>
-  <ul class="device-list-mobile-modern device-list-mobile-grid">
+
+
+
+<div class="smarthome-circle-diagram" style="display: none;">
+  <div class="diagram-center">
+    <div class="center-icon">
+      <i class="fa fa-server"></i>
+      <div class="center-label">Lokaler<br>Miniserver</div>
+    </div>
+    <!-- Linien zu Geräten -->
+   <svg class="connector-lines" viewBox="0 0 300 300">
+  <line x1="150" y1="105" x2="150" y2="40"  />
+  <line x1="180" y1="120" x2="225" y2="65"  />
+  <line x1="195" y1="150" x2="260" y2="150" />
+  <line x1="180" y1="180" x2="225" y2="235" />
+  <line x1="150" y1="195" x2="150" y2="260" />
+  <line x1="120" y1="180" x2="75"  y2="235" />
+  <line x1="105" y1="150" x2="40"  y2="150" />
+  <line x1="120" y1="120" x2="75"  y2="65"  />
+</svg>
+
+    <!-- Geräte -->
+    <div class="device-item" style="top:  10%; left: 50%;">
+      <i class="fa fa-video-camera"></i><div>Kamera</div>
+    </div>
+    <div class="device-item" style="top:  22%; left: 82%;">
+      <i class="fa fa-android"></i><div>Staubsauger</div>
+    </div>
+    <div class="device-item" style="top:  50%; left: 92%;">
+      <i class="fa fa-television"></i><div>Fernseher</div>
+    </div>
+    <div class="device-item" style="top:  78%; left: 82%;">
+      <i class="fa fa-sun-o"></i><div>Solar</div>
+    </div>
+    <div class="device-item" style="top:  90%; left: 50%;">
+      <i class="fa fa-eye"></i><div>Türkamera</div>
+    </div>
+    <div class="device-item" style="top:  78%; left: 18%;">
+      <i class="fa fa-sliders"></i><div>Storen</div>
+    </div>
+    <div class="device-item" style="top:  50%; left: 8%;">
+      <i class="fa fa-lock"></i><div>Türe</div>
+    </div>
+    <div class="device-item" style="top:  22%; left: 18%;">
+      <i class="fa fa-server"></i><div>Server</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Geräte-Visualisierung für Mobile -->
+
+  <!--<ul class="device-list-mobile-modern device-list-mobile-grid">
     <li>
       <span class="device-icon"><i class="fa fa-video-camera"></i></span>
       <div>
@@ -967,7 +1169,7 @@ if (logoScope) {
     </li>
   </ul>
 </div>
-
+-->
 
 
 <!-- Unsere Leistungen -->
@@ -1180,14 +1382,16 @@ document.addEventListener('click', function(e) {
 </script>
 
 <script>
-document.querySelectorAll('.feature-tile').forEach(tile => {
-  tile.addEventListener('mouseenter', () => {
-    tile.querySelector('.feature-desc').style.display = 'block';
+if (window.innerWidth > 992) {
+  document.querySelectorAll('.feature-tile').forEach(tile => {
+    tile.addEventListener('mouseenter', () => {
+      tile.querySelector('.feature-desc').style.display = 'block';
+    });
+    tile.addEventListener('mouseleave', () => {
+      tile.querySelector('.feature-desc').style.display = 'none';
+    });
   });
-  tile.addEventListener('mouseleave', () => {
-    tile.querySelector('.feature-desc').style.display = 'none';
-  });
-});
+}
 </script>
 
 
