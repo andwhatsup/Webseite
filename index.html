@@ -781,14 +781,28 @@ footer .social-icons i:hover {
   }
 }
 
+
 @media (max-width: 768px) {
+  .w3-row-padding .feature-tile {
+    width: 50% !important;
+    box-sizing: border-box;
+  }
+
   .feature-tile .w3-card {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     text-align: center;
-    min-height: 260px; /* Einheitliche Höhe für Mobile */
+    min-height: 260px;
+  }
+
+  .feature-desc {
+    margin-top: 12px;
+    font-size: 1.05rem;
+    color: #444;
+    display: block !important;
   }
 }
 
