@@ -33,6 +33,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   background-color: white;
   z-index: 2;
+  
 }
 
 /* Adjust header content to be visible over the background */
@@ -698,22 +699,28 @@ footer .social-icons i:hover {
 }
 
 
-@media (max-width: 992px) {
+
   .smarthome-circle-diagram {
-    display: flex !important;
-    justify-content: center;
-    margin: 32px auto;
-    max-width: 320px;
-    position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 32px auto;
+  width: 100%;
+  max-width: 450px;   /* Größer auf großen Bildschirmen */
+  min-width: 320px;
+  position: relative;
   }
 
   .diagram-center {
     position: relative;
-    width: 300px;
-    height: 300px;
-    background: #f7f7f7;
-    border-radius: 50%;
-    box-shadow: 0 0 12px rgba(0,0,0,0.08);
+  width: 100%;
+  aspect-ratio: 1 / 1; /* immer quadratisch */
+  max-width: 600px;
+  min-width: 320px;
+  min-height: 300px;
+  background: #f7f7f7;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(0,0,0,0.08);
+  margin: 0 auto;
   }
 
   .center-icon {
@@ -770,7 +777,7 @@ footer .social-icons i:hover {
     margin-bottom: 4px;
     display: block;
   }
-}
+
 
 @media (max-width: 768px) {
   .bgimg-1 {
@@ -806,6 +813,117 @@ footer .social-icons i:hover {
   }
 }
 
+.diagram-device-desc {
+  min-height: 48px;
+  margin-top: 32px;
+  font-size: 1.18rem;
+  color: #222;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  padding: 18px 24px;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.35s cubic-bezier(.4,0,.2,1), transform 0.35s cubic-bezier(.4,0,.2,1);
+  pointer-events: none;
+  text-align: center;
+}
+.diagram-device-desc.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.device-item {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 50%;
+  background: #f7f7f7;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 8px 0 2px 0;
+}
+.device-item:hover, .device-item.active {
+  background: #222;
+  color: #fff;
+ 
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+}
+.device-item i {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+  display: block;
+}
+#diagram-device-desc{
+  display:block;
+  min-height: 80px;     /* Reserve, an Inhalt anpassen */
+  margin-bottom: 48px;  /* fixer Abstand, immer gleich */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .2s ease-in-out;
+}
+
+#diagram-device-desc.active{
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+
+/* Flip-Karten */
+.feature-card { perspective: 1000px; }
+.feature-card .card-inner{
+  position: relative;
+  min-height: 240px;
+  transform-style: preserve-3d;
+  transition: transform .6s cubic-bezier(.4,0,.2,1);
+}
+.feature-card.is-flipped .card-inner{ transform: rotateY(180deg); }
+
+.card-face{
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* weiße Kacheln */
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  padding: 28px 20px;
+}
+.card-front h4{ margin: 10px 0 0; }
+.card-back{ transform: rotateY(180deg); }
+
+/* Icon nur vorne anzeigen */
+.card-back .icon-wrap{ display: none; }
+
+/* Kreis-Icon */
+.icon-wrap{
+  width: 76px;
+  height: 76px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+.icon-wrap .fa{ font-size: 32px; line-height: 1; }
+
+/* Hover-Effekt */
+.feature-card:hover .card-face{ box-shadow: 0 10px 26px rgba(0,0,0,.12); }
+
+/* Farben im grauen Abschnitt */
+#vision .card-front{ color:#222; }
 </style>
 
 </head>
@@ -845,6 +963,8 @@ if (logoScope) {
       navbar.classList.remove('scrolled');
     }
   });
+
+  
 </script>
 
 
@@ -887,12 +1007,12 @@ if (logoScope) {
 
 
 <!-- Sidebar on small screens when clicking the menu icon -->
-<nav id="mySidebar" class="custom-sidebar" style="display:none;">
-  <a href="javascript:void(0)" onclick="w3_close()" class="sidebar-btn close-btn">Schliessen ×</a>
-  <a href="about.html" class="sidebar-btn close-btn">Vorgehen</a>
-  <a href="team.html" class="sidebar-btn close-btn">Team</a>
-  <a href="work.html" class="sidebar-btn close-btn">Projekte</a>
-  <a href="contact.html" class="sidebar-btn close-btn">Anfrage</a>
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Schliessen ×</a>
+  <a href="about.html" class="w3-bar-item w3-button">Vorgehen</a>
+  <a href="team.html" class="w3-bar-item w3-button">Team</a>
+  <a href="work.html" class="w3-bar-item w3-button">Projekte</a>
+  <a href="contact.html" class="w3-bar-item w3-button">Anfrage</a>
 </nav>
 
 
@@ -969,40 +1089,62 @@ if (logoScope) {
   <h2 class="w3-center" style="font-size: 2.8rem; font-weight: bold; margin-bottom: 32px;">
     Was Sie von unserem Team erwarten können
   </h2>
-  <div class="w3-row-padding w3-center" style="max-width:1100px;margin:auto; min-height: 320px;">
-    <div class="feature-tile w3-col m3 s6 w3-padding">
-      <div class="w3-card w3-round-large w3-padding-32 w3-hover-shadow" style="min-height: 220px;">
-        <i class="fa fa-users w3-xxlarge w3-text-black"></i>
+<div class="feature-tile w3-col m3 s6 w3-padding ">
+  <div class="feature-card"  role="button" tabindex="0" aria-label="Alles aus einer Hand">
+    <div class="card-inner">
+      <div class="card-face card-front">
+        <div class="icon-wrap"><i class="fa fa-cogs" aria-hidden="true"></i></div>
         <h4>Alles aus einer Hand</h4>
-        <div class="feature-desc" style="display:none;">Von Beratung bis Support – wir kümmern uns um alles.</div>
       </div>
-    </div>
-    <!--energieeffiziente Lösung"-->
-    <div class="feature-tile w3-col m3 s6 w3-padding">
-      <div class="w3-card w3-round-large w3-padding-32 w3-hover-shadow" style="min-height: 220px;">
-        <i class="fa fa-leaf w3-xxlarge w3-text-black"></i>
-        <h4>Nachhaltige Geräte</h4>
-        <div class="feature-desc" style="display:none;">Sparen Sie Strom und Kosten mit smarter Technik.</div>
-      </div>
-    </div>
-    <div class="feature-tile w3-col m3 s6 w3-padding">
-      <div class="w3-card w3-round-large w3-padding-32 w3-hover-shadow" style="min-height: 220px;">
-        <i class="fa fa-mobile w3-xxlarge w3-text-black"></i>
-        <h4>Einfache Bedienung</h4>
-        <div class="feature-desc" style="display:none;">Intuitive Steuerung per App oder Sprache.</div>
-      </div>
-    </div>
-    <div class="feature-tile w3-col m3 s6 w3-padding">
-      <div class="w3-card w3-round-large w3-padding-32 w3-hover-shadow" style="min-height: 220px;">
-        <i class="fa fa-shield w3-xxlarge w3-text-black"></i>
-        <h4>Einbruchschutz</h4>
-        <div class="feature-desc" style="display:none;">Mehr Sicherheit für Ihr Zuhause.</div>
+      <div class="card-face card-back">
+        <div class="feature-desc">Von Beratung bis Support – wir kümmern uns um alles.</div>
       </div>
     </div>
   </div>
 </div>
 
+<div class="feature-tile w3-col m3 s6 w3-padding">
+  <div class="feature-card" role="button" tabindex="0" aria-label="Nachhaltige Geräte">
+    <div class="card-inner">
+      <div class="card-face card-front">
+        <div class="icon-wrap"><i class="fa fa-leaf" aria-hidden="true"></i></div>
+        <h4>Nachhaltige Geräte</h4>
+      </div>
+      <div class="card-face card-back">
+        <div class="feature-desc">Sparen Sie Strom und Kosten mit smarter Technik.</div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="feature-tile w3-col m3 s6 w3-padding">
+  <div class="feature-card" role="button" tabindex="0" aria-label="Einfache Bedienung">
+    <div class="card-inner">
+      <div class="card-face card-front">
+          <div class="icon-wrap"><i class="fa fa-sliders" aria-hidden="true"></i></div>
+        <h4>Einfache Bedienung</h4>
+      </div>
+      <div class="card-face card-back">
+        <div class="feature-desc">Intuitive Steuerung per App oder Sprache.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="feature-tile w3-col m3 s6 w3-padding">
+  <div class="feature-card" role="button" tabindex="0" aria-label="Einbruchschutz">
+    <div class="card-inner">
+      <div class="card-face card-front">
+        <div class="icon-wrap"><i class="fa fa-shield" aria-hidden="true"></i></div>
+        <h4>Einbruchschutz</h4>
+      </div>
+      <div class="card-face card-back">
+        <div class="feature-desc">Mehr Sicherheit für Ihr Zuhause.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
 
 
@@ -1010,93 +1152,20 @@ if (logoScope) {
 
 <!-- Visualisierung: Smart Home Haus -->
 
+
 <div class="w3-container w3-padding-64 w3-white w3-center smart-home-section">
-  <h3 class="w3-center">Wie ein modernes Smart Home aussehen kann</h3>
+  <h3 class="w3-center">Unser Konzept für Ihr Samrt Home</h3>
   <p class="w3-large">Dieses Beispiel zeigt, welche Geräte zentral gesteuert und integriert werden können – übersichtlich und sicher verbunden mit dem Baumann Secure Tech.</p>
   <h3 class="w3-large hover-hint">Klicken Sie auf ein Gerät, um mehr zu erfahren.</h3>
 
-  <div class="smarthome-flex" style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 32px;">
-    <!-- Linke Buttons -->
-    <div class="device-list-wrapper" >
-      <div class="device-btn-col">
-        <button class="device-btn" data-device="kamera">Kamera</button>
-        <div class="device-desc device-desc-left" id="desc-kamera"></div>
-      </div>
-      <div class="device-btn-col">
-        <button class="device-btn" data-device="staubsauger">Staubsauger</button>
-        <div class="device-desc device-desc-left" id="desc-staubsauger"></div>
-      </div>
-      <div class="device-btn-col">
-        <button class="device-btn" data-device="fernseher">Fernseher</button>
-        <div class="device-desc device-desc-left" id="desc-fernseher"></div>
-      </div>
-      <div class="device-btn-col">
-        <button class="device-btn" data-device="solarpanels">Solarpanels</button>
-        <div class="device-desc device-desc-left" id="desc-solarpanels"></div>
-      </div>
-    </div>
-
-    <!-- Bild in der Mitte -->
-    <div class="smarthome-img-container" style="position: relative; display: inline-block; width: 600px; max-width: 90%;">
-      <img src="Bilder/Smarthome.png" alt="3D-Smart-Home" class="w3-image w3-card-4" style="width: 100%; max-width: 600px;">
-      <div class="hotspot" id="hs-kamera" style="top: 50%; left: 12%;">
-        <span class="tooltip">Aussenkamera mit Bewegungserkennung</span>
-      </div>
-      <div class="hotspot" id="hs-staubsauger" style="top: 83%; left: 19%;">
-        <span class="tooltip">Automatischer Saugroboter – App-gesteuert</span>
-      </div>
-      <div class="hotspot" id="hs-tuerkamera" style="top: 53%; left: 87%;">
-        <span class="tooltip">Sichere Eingangskontrolle mit Kamera, Live-Stream und Aufzeichnung</span>
-      </div>
-      <div class="hotspot" id="hs-solarpanels" style="top: 23%; left: 48%;">
-        <span class="tooltip">Energieproduktion live überwachen und Verbrauch automatisch optimieren</span>
-      </div>
-      <div class="hotspot" id="hs-storen" style="top: 45%; left: 78%;">
-        <span class="tooltip">Automatische Storensteuerung – bequem per App oder Zeitplan</span>
-      </div>
-      <div class="hotspot" id="hs-server" style="top: 78%; left: 51%;">
-        <span class="tooltip">Zentrale Steuerungseinheit – lokal, sicher und jederzeit erweiterbar</span>
-      </div>
-      <div class="hotspot" id="hs-tuere" style="top: 65%; left: 77%;">
-        <span class="tooltip">Elektronisches Türschloss mit Fingerabdruck</span>
-      </div>
-      <div class="hotspot" id="hs-fernseher" style="top: 57%; left: 37%;">
-        <span class="tooltip">Smart-TV mit Sprachsteuerung und zentraler Medienverwaltung</span>
-      </div>      
-    </div>
-
- 
-     <!-- Rechte Buttons -->
-    <div class="device-list-wrapper">
-      <div class="device-btn-col">
-        <button class="device-btn" data-device="tuerkamera">Türkamera</button>
-        <div class="device-desc device-desc-right" id="desc-tuerkamera"></div>
-      </div>
-      <div class="device-btn-col">
-        <button class="device-btn" data-device="storen">Storen</button>
-        <div class="device-desc device-desc-right" id="desc-storen"></div>
-      </div>
-      <div class="device-btn-col">
-        <button class="device-btn" data-device="server">Server</button>
-        <div class="device-desc device-desc-right" id="desc-server"></div>
-      </div>
-      <div class="device-btn-col">
-        <button class="device-btn" data-device="tuere">Türe</button>
-        <div class="device-desc device-desc-right" id="desc-tuere"></div>
-      </div>
-    </div>
-  </div>
+  
 </div>
 
-<!-- Moible -->
-<div class="smarthome-mobile-view" style="display:none;">
-  <div class="smarthome-mobile-img" style="text-align:center; margin-bottom: 24px;">
-    <img src="Bilder/Smarthome.png" alt="3D-Smart-Home" style="max-width: 320px; width: 90%; border-radius: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.10);">
-  </div>
 
 
+<div class="section-smarthome">
 
-<div class="smarthome-circle-diagram" style="display: none;">
+<div class="smarthome-circle-diagram">
   <div class="diagram-center">
     <div class="center-icon">
       <i class="fa fa-server"></i>
@@ -1115,32 +1184,51 @@ if (logoScope) {
 </svg>
 
     <!-- Geräte -->
-    <div class="device-item" style="top:  10%; left: 50%;">
-      <i class="fa fa-video-camera"></i><div>Kamera</div>
+     
+     <div class="device-item" data-device="kamera" style="top: 10%; left: 50%;">
+      <i class="fa fa-video-camera"></i>
+      <div>Kamera</div>
+      
     </div>
-    <div class="device-item" style="top:  22%; left: 82%;">
-      <i class="fa fa-android"></i><div>Staubsauger</div>
+    <div class="device-item" data-device="staubsauger" style="top: 22%; left: 82%;">
+      <i class="fa fa-android"></i>
+      <div>Staubsauger</div>
+      
     </div>
-    <div class="device-item" style="top:  50%; left: 92%;">
-      <i class="fa fa-television"></i><div>Fernseher</div>
+    <div class="device-item" data-device="fernseher" style="top: 50%; left: 92%;">
+      <i class="fa fa-television"></i>
+      <div>Fernseher</div>
+     
     </div>
-    <div class="device-item" style="top:  78%; left: 82%;">
-      <i class="fa fa-sun-o"></i><div>Solar</div>
+    <div class="device-item" data-device="solarpanels" style="top: 78%; left: 82%;">
+      <i class="fa fa-sun-o"></i>
+      <div>Solar</div>
+  
     </div>
-    <div class="device-item" style="top:  90%; left: 50%;">
-      <i class="fa fa-eye"></i><div>Türkamera</div>
+    <div class="device-item" data-device="tuerkamera" style="top: 90%; left: 50%;">
+      <i class="fa fa-eye"></i>
+      <div>Türkamera</div>
+      
     </div>
-    <div class="device-item" style="top:  78%; left: 18%;">
-      <i class="fa fa-sliders"></i><div>Storen</div>
+    <div class="device-item" data-device="storen" style="top: 78%; left: 18%;">
+      <i class="fa fa-sliders"></i>
+      <div>Storen</div>
+     
     </div>
-    <div class="device-item" style="top:  50%; left: 8%;">
-      <i class="fa fa-lock"></i><div>Türe</div>
+    <div class="device-item" data-device="tuere" style="top: 50%; left: 8%;">
+      <i class="fa fa-lock"></i>
+      <div>Türe</div>
+      
     </div>
-    <div class="device-item" style="top:  22%; left: 18%;">
-      <i class="fa fa-server"></i><div>Server</div>
-    </div>
+  <div class="device-item" data-device="sensor" style="top: 22%; left: 18%;">
+  <i class="fa fa-thermometer"></i>
+  <div>Sensor</div>
+</div>
   </div>
 </div>
+<!-- Lange Beschreibung direkt nach dem Diagramm -->
+<div id="diagram-device-desc" class="diagram-device-desc"></div>
+
 </div>
 
 <!-- Geräte-Visualisierung für Mobile -->
@@ -1374,59 +1462,60 @@ if (logoScope2) {
   
 </script>
 <script>
-// Geräte-Beschreibungen
-const deviceDescriptions = {
-  kamera: "Aussenkamera mit Bewegungserkennung",
-  staubsauger: "Automatischer Saugroboter – App-gesteuert",
-  tuerkamera: "Sichere Eingangskontrolle mit Kamera, Live-Stream und Aufzeichnung",
-  solarpanels: "Energieproduktion live überwachen und Verbrauch automatisch optimieren",
-  storen: "Automatische Storensteuerung – bequem per App oder Zeitplan",
-  server: "Zentrale Steuerungseinheit – lokal, sicher und jederzeit erweiterbar",
-  tuere: "Elektronisches Türschloss mit Fingerabdruck",
-  fernseher: "Smart-TV mit Sprachsteuerung und zentraler Medienverwaltung"
-};
+(function () {
+  const descMap = {
+    kamera: "Aussenkamera mit Bewegungserkennung – für Sicherheit rund ums Haus.",
+    staubsauger: "Automatischer Saugroboter – hält Ihr Zuhause sauber, ganz automatisch.",
+    fernseher: "Smart-TV – zentral gesteuert, mit Sprachsteuerung und Medienverwaltung.",
+    solarpanels: "Solarpanels – Energieproduktion live überwachen und optimieren auch über das Handy.",
+    tuerkamera: "Türkamera – sichere Eingangskontrolle mit Live-Stream und Aufzeichnung.",
+    storen: "Storen – automatische Steuerung per App oder Zeitplan, alles sicher über den Server.",
+    server: "Zentrale Steuerungseinheit – lokal, sicher, jederzeit erweiterbar und skalierbar.",
+    tuere: "Elektronisches Türschloss – Zugang per Fingerabdruck oder App."
+  };
 
-// Alle Beschreibungen ausblenden
-function hideAllDeviceDescs() {
-  document.querySelectorAll('.device-desc').forEach(d => {
-    d.classList.remove('visible');
-    // Text bleibt erhalten, damit Animation sauber läuft
+  const items = document.querySelectorAll('.device-item');
+  const box = document.getElementById('diagram-device-desc');
+  if (!items.length || !box) return;
+
+  items.forEach(item => {
+    item.addEventListener('click', function (e) {
+      e.stopPropagation();
+      items.forEach(i => i.classList.remove('active'));
+      this.classList.add('active');
+      const key = this.dataset.device;
+      box.textContent = descMap[key] || '';
+      box.classList.add('active');
+    });
   });
-}
 
-// Button-Klick zeigt Beschreibung mit Animation
-document.querySelectorAll('.device-btn').forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    hideAllDeviceDescs();
-    const descId = 'desc-' + btn.dataset.device;
-    const descElem = document.getElementById(descId);
-    if (descElem) {
-      descElem.textContent = deviceDescriptions[btn.dataset.device] || '';
-      descElem.classList.add('visible');
+  document.addEventListener('click', function (e) {
+    const clickedInsideItem = e.target.closest('.device-item');
+    const clickedInsideBox  = e.target.closest('#diagram-device-desc');
+    if (!clickedInsideItem && !clickedInsideBox) {
+      items.forEach(i => i.classList.remove('active'));
+      box.classList.remove('active');
+      box.textContent = '';
     }
-    e.stopPropagation();
   });
-});
+})();
 
-// Klick ausserhalb blendet Beschreibungen aus
-document.addEventListener('click', function(e) {
-  if (!e.target.classList.contains('device-btn')) {
-    hideAllDeviceDescs();
-  }
-});
-</script>
 
-<script>
-if (window.innerWidth > 992) {
-  document.querySelectorAll('.feature-tile').forEach(tile => {
-    tile.addEventListener('mouseenter', () => {
-      tile.querySelector('.feature-desc').style.display = 'block';
-    });
-    tile.addEventListener('mouseleave', () => {
-      tile.querySelector('.feature-desc').style.display = 'none';
+
+(function(){
+  const cards = document.querySelectorAll('.feature-card');
+  if (!cards.length) return;
+
+  function toggle(card){ card.classList.toggle('is-flipped'); }
+
+  cards.forEach(card=>{
+    card.addEventListener('click', e => toggle(card));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(card); }
     });
   });
-}
+})();
+
 </script>
 
 

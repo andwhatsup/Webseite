@@ -314,6 +314,15 @@ footer .w3-content {
 <script>
   function w3_open() { document.getElementById("mySidebar").style.display = "block"; }
   function w3_close() { document.getElementById("mySidebar").style.display = "none"; }
+  
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
 </script>
 
 </body>

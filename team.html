@@ -273,6 +273,17 @@ footer .w3-content {
   function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
   }
+
+  // Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
 </script>
 
 </body>

@@ -294,7 +294,13 @@ footer .w3-content {
   function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
   }
-  
+  function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
 </script>
 
 </body>
