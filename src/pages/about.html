@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <base href="/src/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Vorgehen | Baumann Secure Tech</title>
+  <meta name="description" content="So arbeiten wir mit Ihnen Schritt für Schritt.">
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <style>
+    /* Page hero */
+    .bgimg-1{
+      min-height:60vh;
+      background:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+        url("Bilder/vorgehen.jpg") center/cover no-repeat;
+    }
+  </style>
+</head>
+<body>
+  <!-- partial mounts -->
+  <div id="nav"></div>
+  <div id="sidebar"></div>
+
+  <!-- page header -->
+  <header class="bgimg-2 w3-display-container w3-grayscale-min">
+    <div class="w3-display-middle w3-text-white" style="text-align:center;">
+      <h1 class="w3-xxxlarge w3-animate-top">Unser Vorgehen</h1>
+      <p class="w3-xlarge">So arbeiten wir mit Ihnen Schritt für Schritt</p>
+    </div>
+  </header>
+
+  <!-- content -->
+  <div class="w3-container" style="padding:128px 16px">
+    <h3 class="w3-center" style="font-size:2.2rem;font-weight:700;margin-bottom:48px;">
+      Der ganze Prozess ist in vier Schritte eingeteilt
+    </h3>
+
+    <div class="w3-row-padding w3-center" style="margin-top:64px">
+      <div class="w3-quarter">
+        <i class="fa-solid fa-comments w3-margin-bottom w3-jumbo w3-center"></i>
+        <p class="w3-xlarge" style="font-weight:600;">1. Kontaktaufnahme</p>
+        <p class="w3-large">Wir klären Ihre Situation und Ziele.</p>
+      </div>
+      <div class="w3-quarter">
+        <i class="fa-solid fa-list-check w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-xlarge" style="font-weight:600;">2. Konzept</p>
+        <p class="w3-large">Sie erhalten ein klares Umsetzungskonzept mit Kosten.</p>
+      </div>
+      <div class="w3-quarter">
+        <i class="fa-solid fa-gears w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-xlarge" style="font-weight:600;">3. Installation</p>
+        <p class="w3-large">Montage vor Ort und Einweisung in die Bedienung.</p>
+      </div>
+      <div class="w3-quarter">
+        <i class="fa-solid fa-phone w3-margin-bottom w3-jumbo"></i>
+        <p class="w3-xlarge" style="font-weight:600;">4. Support</p>
+        <p class="w3-large">Updates, Erweiterungen und laufender Support.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA + footer mounts -->
+  <div id="cta"></div>
+  <div id="footer"></div>
+
+  <!-- load partials (works because of <base href="/src/">) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Promise.all([
+        fetch('partials/nav.html',     {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('nav').innerHTML = h; }),
+        fetch('partials/sidebar.html', {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('sidebar').innerHTML = h; }),
+        fetch('partials/cta.html',     {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('cta').innerHTML = h; }),
+        fetch('partials/footer.html',  {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('footer').innerHTML = h; })
+      ]).catch(err => console.error('Partial load failed:', err));
+    });
+
+    // sidebar controls
+    function w3_open(){ const el=document.getElementById('mySidebar'); if(el) el.style.display='block'; }
+    function w3_close(){ const el=document.getElementById('mySidebar'); if(el) el.style.display='none'; }
+  </script>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

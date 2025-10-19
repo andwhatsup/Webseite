@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kostenrechner | Baumann Secure Tech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- W3 + Fonts + Icons -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Project CSS (relative to /src/pages/) -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Page-specific CSS only -->
+  <style>
+    .bgimg-3{
+      min-height:80vh;
+      background: url("Bilder/kostenrechner.jpg") center/cover no-repeat;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Partials mount points -->
+  <div id="nav"></div>
+  <div id="sidebar"></div>
+
+  <!-- Hero -->
+  <header class="bgimg-3 w3-display-container w3-grayscale-min">
+    <div class="w3-display-middle w3-text-white" style="text-align:center;">
+      <h1 class="w3-xxxlarge w3-animate-top">Kostenrechner</h1>
+      <p class="w3-xlarge">Ermitteln Sie einen Richtwert für Ihre Lösung</p>
+    </div>
+  </header>
+
+  <!-- Rechner -->
+  <section class="w3-container w3-padding-64 w3-light-grey">
+    <h2 class="w3-center">Kostenrechner für Ihr Eigenheim</h2>
+    <p class="w3-center w3-large">Unverbindliche, grobe Schätzung</p>
+
+    <div class="w3-content" style="max-width:600px;">
+      <label for="kameras">Anzahl Kameras</label>
+      <input class="w3-input w3-margin-bottom" type="number" id="kameras" value="2" min="0">
+
+      <label for="sirenen">Anzahl Sirenen</label>
+      <input class="w3-input w3-margin-bottom" type="number" id="sirenen" value="1" min="0">
+
+      <label for="smart">Anzahl Smart-Home-Geräte</label>
+      <input class="w3-input w3-margin-bottom" type="number" id="smart" value="3" min="0">
+
+      <p class="w3-margin-top">
+        <label><input type="checkbox" id="sprach"> Sprachsteuerung (z. B. Alexa)</label><br>
+        <label><input type="checkbox" id="installation" checked> Installation</label><br>
+        <label><input type="checkbox" id="app"> Smartphone-App</label>
+      </p>
+
+      <button class="w3-button w3-black" onclick="calculatePrice()">Kosten berechnen</button>
+      <h3 class="w3-margin-top">Geschätzte Kosten: <span id="price">–</span> CHF</h3>
+    </div>
+  </section>
+
+  <!-- CTA + Footer mounts -->
+  <div id="cta"></div>
+  <div id="footer"></div>
+
+  <!-- Partials loader (paths relative to /src/pages/) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Promise.all([
+        fetch('partials/nav.html',     {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('nav').innerHTML = h; }),
+        fetch('partials/sidebar.html', {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('sidebar').innerHTML = h; }),
+        fetch('partials/cta.html',     {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('cta').innerHTML = h; }),
+        fetch('partials/footer.html',  {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('footer').innerHTML = h; })
+      ]).catch(err => console.error('Partials load failed:', err));
+    });
+
+    // Simple estimator
+    function calculatePrice(){
+      const cam = +document.getElementById('kameras').value || 0;
+      const sir = +document.getElementById('sirenen').value || 0;
+      const sm  = +document.getElementById('smart').value   || 0;
+      const sprach = document.getElementById('sprach').checked;
+      const inst   = document.getElementById('installation').checked;
+      const app    = document.getElementById('app').checked;
+
+      let total = cam*300 + sir*150 + sm*120;
+      if (sprach) total += 200;
+      if (inst)   total += 600;
+      if (app)    total += 100;
+
+      document.getElementById('price').textContent = total.toLocaleString('de-CH');
+    }
+
+    // Sidebar controls (single definition)
+    function w3_open(){ const el=document.getElementById('mySidebar'); if(el) el.style.display='block'; }
+    function w3_close(){ const el=document.getElementById('mySidebar'); if(el) el.style.display='none'; }
+  </script>
+
+  <!-- Project JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

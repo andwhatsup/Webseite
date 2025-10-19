@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BST Webseite</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<base href="/src/">
+<!-- Project styles -->
+<link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Page-specific CSS -->
+  <style>
+    .bgimg-1 {
+      min-height:60vh;
+      background:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+        url("Bilder/frontbild.jpg") center/cover no-repeat;
+    }
+    .proj-img{ width:100%; max-width:520px; border-radius:8px; }
+  </style>
+</head>
+<body>
+  <!-- Partials -->
+  <div id="nav"></div>
+  <div id="sidebar"></div>
+
+
+<!-- Header with full-height image -->
+  <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+
+
+    <!-- HOMESHIELD Titel oben zentriert -->
+    <div class="w3-display-topmiddle w3-center w3-padding-64">
+      <h1 class="w3-text-white" style="font-size: 8rem; font-weight: bold; margin: 0;"></h1>
+    </div>
+    
+    <!-- Subtitle -->
+    <div class="w3-display-middle w3-center" style="top: 40%; ">
+      <p style="font-size: 2.4rem; font-weight: 500; margin: 0; color: #fff; margin-bottom: 20px">
+        Smart-Home Security für kleine Betriebe und Ihr Zuhause.
+      </p>
+    </div>
+
+      <!-- Sub-Subtitle -->
+    <div class="w3-display-middle w3-center" style="top: 40%; ">
+      <p style="font-size: 2rem; font-weight: 500; margin: 0; color: #fff; margin-bottom: 120px">
+        Unsere Augen sind überall.
+      </p>
+    </div>
+
+      <!-- Zentrales: Logo -->
+      <div class="w3-display-middle w3-center" style="margin-top: 20px; margin-bottom: 20px">
+        <img src="Bilder/BST_Logo_white2.png" alt="BST Logo" style="height: 130px;">
+      </div>
+
+    <div class="content-wrapper" style="margin-bottom: 40px;"></div>
+    </div>
+
+    <!-- Call-to-Action Arrow -->
+    <div class="w3-display-top w3-center" style="top: 50% ">
+      <a href="#leistungen" class="scroll-arrow" style="margin-bottom: 40px">
+        <span style="color: #f7f7f7; font-size: 1.8rem; display: block">
+          Unsere Leistungen
+        </span>
+        <svg width="40" height="20" viewBox="0 0 40 20" class="bounce-arrow" style="margin-bottom: 20px">
+          <path d="M2,3 L20,17 L38,3" stroke="#f7f7f7" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+  </header>
+
+  <div class="content-wrapper">
+
+  <!-- Kacheln "Was sie von unserem Team erwarten können"-->
+  <div class="w3-container w3-padding-64 w3-light-grey" id="vision" style="min-height: 480px;">
+    <h2 class="w3-center" style="font-size: 2.8rem; font-weight: bold; margin-bottom: 32px;">
+      Was Sie von unserem Team erwarten können
+    </h2>
+  <div class="feature-tile w3-col m3 s6 w3-padding ">
+    <div class="feature-card"  role="button" tabindex="0" aria-label="Alles aus einer Hand">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <div class="icon-wrap"><i class="fa fa-cogs" aria-hidden="true"></i></div>
+          <h4>Alles aus einer Hand</h4>
+        </div>
+        <div class="card-face card-back">
+          <div class="feature-desc">Von Beratung bis Support – wir kümmern uns um alles.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-tile w3-col m3 s6 w3-padding">
+    <div class="feature-card" role="button" tabindex="0" aria-label="Nachhaltige Geräte">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <div class="icon-wrap"><i class="fa fa-leaf" aria-hidden="true"></i></div>
+          <h4>Nachhaltige Geräte</h4>
+        </div>
+        <div class="card-face card-back">
+          <div class="feature-desc">Sparen Sie Strom und Kosten mit smarter Technik.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-tile w3-col m3 s6 w3-padding">
+    <div class="feature-card" role="button" tabindex="0" aria-label="Einfache Bedienung">
+      <div class="card-inner">
+        <div class="card-face card-front">
+            <div class="icon-wrap"><i class="fa fa-sliders" aria-hidden="true"></i></div>
+          <h4>Einfache Bedienung</h4>
+        </div>
+        <div class="card-face card-back">
+          <div class="feature-desc">Intuitive Steuerung per App oder Sprache.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-tile w3-col m3 s6 w3-padding">
+    <div class="feature-card" role="button" tabindex="0" aria-label="Einbruchschutz">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <div class="icon-wrap"><i class="fa fa-shield" aria-hidden="true"></i></div>
+          <h4>Einbruchschutz</h4>
+        </div>
+        <div class="card-face card-back">
+          <div class="feature-desc">Mehr Sicherheit für Ihr Zuhause.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+  <!-- Visualisierung: Smart Home Haus -->
+  <div class="w3-container w3-padding-64 w3-white w3-center smart-home-section">
+    <h3 class="w3-center">Unser Konzept für Ihr Samrt Home</h3>
+    <p class="w3-large">Dieses Beispiel zeigt, welche Geräte zentral gesteuert und integriert werden können – übersichtlich und sicher verbunden mit dem Baumann Secure Tech.</p>
+    <h3 class="w3-large hover-hint">Klicken Sie auf ein Gerät, um mehr zu erfahren.</h3>
+  </div>
+
+
+
+  <div class="section-smarthome">
+
+  <div class="smarthome-circle-diagram">
+    <div class="diagram-center">
+      <div class="center-icon">
+        <i class="fa fa-server"></i>
+        <div class="center-label">Lokaler<br>Miniserver</div>
+      </div>
+      <!-- Linien zu Geräten -->
+    <svg class="connector-lines" viewBox="0 0 300 300">
+    <line x1="150" y1="105" x2="150" y2="40"  />
+    <line x1="180" y1="120" x2="225" y2="65"  />
+    <line x1="195" y1="150" x2="260" y2="150" />
+    <line x1="180" y1="180" x2="225" y2="235" />
+    <line x1="150" y1="195" x2="150" y2="260" />
+    <line x1="120" y1="180" x2="75"  y2="235" />
+    <line x1="105" y1="150" x2="40"  y2="150" />
+    <line x1="120" y1="120" x2="75"  y2="65"  />
+  </svg>
+
+      <!-- Geräte -->
+      
+      <div class="device-item" data-device="kamera" style="top: 10%; left: 50%;">
+        <i class="fa fa-video-camera"></i>
+        <div>Kamera</div>
+        
+      </div>
+      <div class="device-item" data-device="staubsauger" style="top: 22%; left: 82%;">
+        <i class="fa fa-android"></i>
+        <div>Staubsauger</div>
+        
+      </div>
+      <div class="device-item" data-device="fernseher" style="top: 50%; left: 92%;">
+        <i class="fa fa-television"></i>
+        <div>Fernseher</div>
+      
+      </div>
+      <div class="device-item" data-device="solarpanels" style="top: 78%; left: 82%;">
+        <i class="fa fa-sun-o"></i>
+        <div>Solar</div>
+    
+      </div>
+      <div class="device-item" data-device="tuerkamera" style="top: 90%; left: 50%;">
+        <i class="fa fa-eye"></i>
+        <div>Türkamera</div>
+        
+      </div>
+      <div class="device-item" data-device="storen" style="top: 78%; left: 18%;">
+        <i class="fa fa-sliders"></i>
+        <div>Storen</div>
+      
+      </div>
+      <div class="device-item" data-device="tuere" style="top: 50%; left: 8%;">
+        <i class="fa fa-lock"></i>
+        <div>Türe</div>
+        
+      </div>
+    <div class="device-item" data-device="sensor" style="top: 22%; left: 18%;">
+    <i class="fa fa-thermometer"></i>
+    <div>Sensor</div>
+  </div>
+    </div>
+  </div>
+
+  <!-- Lange Beschreibung direkt nach dem Diagramm -->
+  <div id="diagram-device-desc" class="diagram-device-desc"></div>
+  </div>
+
+  <!-- Geräte-Visualisierung für Mobile -->
+
+    <!--<ul class="device-list-mobile-modern device-list-mobile-grid">
+      <li>
+        <span class="device-icon"><i class="fa fa-video-camera"></i></span>
+        <div>
+          <strong>Kamera</strong>
+          <div class="device-desc-mobile">Aussenkamera mit Bewegungserkennung</div>
+        </div>
+      </li>
+      <li>
+        <span class="device-icon"><i class="fa fa-android"></i></span>
+        <div>
+          <strong>Staubsauger</strong>
+          <div class="device-desc-mobile">Automatischer Saugroboter – App-gesteuert</div>
+        </div>
+      </li>
+      <li>
+        <span class="device-icon"><i class="fa fa-television"></i></span>
+        <div>
+          <strong>Fernseher</strong>
+          <div class="device-desc-mobile">Smart-TV mit Sprachsteuerung und zentraler Medienverwaltung</div>
+        </div>
+      </li>
+      <li>
+        <span class="device-icon"><i class="fa fa-sun-o"></i></span>
+        <div>
+          <strong>Solarpanels</strong>
+          <div class="device-desc-mobile">Energieproduktion live überwachen und Verbrauch automatisch optimieren</div>
+        </div>
+      </li>
+      <li>
+        <span class="device-icon"><i class="fa fa-eye"></i></span>
+        <div>
+          <strong>Türkamera</strong>
+          <div class="device-desc-mobile">Sichere Eingangskontrolle mit Kamera, Live-Stream und Aufzeichnung</div>
+        </div>
+      </li>
+      <li>
+        <span class="device-icon"><i class="fa fa-sliders"></i></span>
+        <div>
+          <strong>Storen</strong>
+          <div class="device-desc-mobile">Automatische Storensteuerung – bequem per App oder Zeitplan</div>
+        </div>
+      </li>
+      <li>
+        <span class="device-icon"><i class="fa fa-server"></i></span>
+        <div>
+          <strong>Server</strong>
+          <div class="device-desc-mobile">Zentrale Steuerungseinheit – lokal, sicher und jederzeit erweiterbar</div>
+        </div>
+      </li>
+      <li>
+        <span class="device-icon"><i class="fa fa-lock"></i></span>
+        <div>
+          <strong>Türe</strong>
+          <div class="device-desc-mobile">Elektronisches Türschloss mit Fingerabdruck</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  -->
+
+
+  <!-- Unsere Leistungen -->
+  <div class="w3-container w3-padding-64 w3-light-grey" id="leistungen">
+    <h2 class="w3-center">Unsere Leistungen</h2>
+    <p class="w3-center w3-large">Professionelle Sicherheits- und Smart-Home-Lösungen aus einer Hand</p>
+
+    <div class="w3-row-padding" style="margin-top:48px">
+
+      <div class="w3-third w3-center w3-margin-bottom">
+        <i class="fa fa-video-camera w3-jumbo"></i>
+        <h4>Videoüberwachung</h4>
+        <p>Kamerainstallation innen & aussen, mit App-Zugriff & Datenschutzkonzept.</p>
+      </div>
+
+      <div class="w3-third w3-center w3-margin-bottom">
+        <i class="fa fa-home w3-jumbo"></i>
+        <h4>Smart-Home-Steuerung</h4>
+        <p>Licht, Heizung, Storen – alles zentral steuerbar über App oder Sprachassistent.</p>
+      </div>
+
+      <div class="w3-third w3-center w3-margin-bottom">
+        <i class="fa fa-unlock-alt w3-jumbo"></i>
+        <h4>Zugangskontrolle</h4>
+        <p>Elektronische Türschlösser, Garagentore, Video-Gegensprechanlagen & schlüssellose Systeme.</p>
+      </div>
+
+      <div class="w3-third w3-center w3-margin-bottom">
+        <i class="fa fa-bell w3-jumbo"></i>
+        <h4>Alarmsysteme</h4>
+        <p>Bewegungsmelder, Aussensirenen und Innensirenen und stille Alarme.</p>
+      </div>
+
+      <div class="w3-third w3-center w3-margin-bottom">
+        <i class="fa fa-wrench w3-jumbo"></i>
+        <h4>Installation & Support</h4>
+        <p>Beratung vor Ort, Einrichtung, Schulung und langfristige Systempflege.</p>
+      </div>
+
+      <div class="w3-third w3-center w3-margin-bottom">
+        <i class="fa fa-hdd-o w3-jumbo"></i>
+        <h4>Lokale Datenspeicherung</h4>
+        <p>Ihre Daten gehören Ihnen – Speicherung ausschliesslich lokal, nicht in der Cloud.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+    <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption" class="w3-opacity w3-large"></p>
+    </div>
+  </div>
+
+  <div id="cta"></div>
+  <div id="footer"></div>
+
+
+  <!-- Load partials -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Promise.all([
+        // FIX: Change 'partial/' to 'partials/'
+        fetch('partials/nav.html',     {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('nav').innerHTML = h; }),
+        fetch('partials/sidebar.html', {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('sidebar').innerHTML = h; }),
+        fetch('partials/cta.html',     {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('cta').innerHTML = h; }),
+        fetch('partials/footer.html',  {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('footer').innerHTML = h; })
+      ]).catch(err => console.error('Partials load failed:', err));
+    });
+
+    // Sidebar controls
+    function w3_open(){ const el=document.getElementById('mySidebar'); if(el) el.style.display='block'; }
+    function w3_close(){ const el=document.getElementById('mySidebar'); if(el) el.style.display='none'; }
+  </script>
+
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projekte | Baumann Secure Tech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- W3 + Fonts + Icons -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <base href="/src/">
+  <!-- Project CSS (relative to /src/pages/) -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Page-specific CSS -->
+  <style>
+    .bgimg-projects{
+      min-height:60vh;
+      background:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+        url("Bilder/Projekte.jpg") center/cover no-repeat;
+    }
+    .proj-img{ width:100%; max-width:520px; border-radius:8px; }
+  </style>
+</head>
+<body>
+
+  <!-- Partials mount points -->
+  <div id="nav"></div>
+  <div id="sidebar"></div>
+
+  <!-- Hero -->
+  <header class="bgimg-projects w3-display-container w3-grayscale-min">
+    <div class="w3-display-middle w3-text-white" style="text-align:center;">
+      <h1 class="w3-xxxlarge w3-animate-top">Unsere Projekte</h1>
+      <p class="w3-xlarge">Einblicke in abgeschlossene Arbeiten</p>
+    </div>
+  </header>
+
+  <!-- Projekte -->
+  <section class="w3-container" style="padding:128px 16px" id="projects">
+    <h3 class="w3-center">Abgeschlossene Projekte</h3>
+    <p class="w3-center w3-large">Klicken Sie auf ein Projekt, um Details zu sehen</p>
+
+    <!-- Projekt 1 -->
+    <button class="w3-button w3-block w3-light-grey w3-left-align w3-large w3-margin-top"
+            onclick="toggleContent('projekt1')">📍 Projekt 1 – Reihenhaus Ostschweiz</button>
+    <div id="projekt1" class="w3-container w3-hide w3-padding-16">
+      <p>Videoüberwachung, Smart-Lichtsteuerung und Zugangskontrolle. Fokus auf lokale Datenspeicherung.</p>
+      <div class="w3-row-padding w3-margin-top">
+        <div class="w3-half w3-center">
+          <img src='Bilder/projekt1.jpg'   alt="Projekt 1 – Bild 1" class="proj-img w3-card" />
+        </div>
+        <div class="w3-half w3-center">
+          <img src='Bilder/projekt1.1.jpg' alt="Projekt 1 – Bild 2" class="proj-img w3-card" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Projekt 2 -->
+    <button class="w3-button w3-block w3-light-grey w3-left-align w3-large w3-margin-top"
+            onclick="toggleContent('projekt2')">📍 Projekt 2 – Einfamilienhaus Thurgau</button>
+    <div id="projekt2" class="w3-container w3-hide w3-padding-16">
+      <p>Skalierbare Alarmanlage mit App-Anbindung und Fernzugriff. Modular erweiterbar.</p>
+      <div class="w3-center w3-margin-top">
+        <img src='Bilder/projekt2.jpg' alt="Projekt 2 – Beispiel" class="proj-img w3-card" style="max-width:600px;" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + Footer mounts -->
+  <div id="cta"></div>
+  <div id="footer"></div>
+
+  <!-- Partials loader (paths relative to /src/pages/) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Promise.all([
+        fetch('partials/nav.html',     {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('nav').innerHTML = h; }),
+        fetch('partials/sidebar.html', {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('sidebar').innerHTML = h; }),
+        fetch('partials/cta.html',     {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('cta').innerHTML = h; }),
+        fetch('partials/footer.html',  {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('footer').innerHTML = h; })
+      ]).catch(err => console.error('Partials load failed:', err));
+    });
+
+    // Show/hide helper
+    function toggleContent(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.classList.toggle('w3-hide');
+      el.classList.toggle('w3-show');
+    }
+
+    // Sidebar controls (single definition)
+    function w3_open(){ const el=document.getElementById('mySidebar'); if(el) el.style.display='block'; }
+    function w3_close(){ const el=document.getElementById('mySidebar'); if(el) el.style.display='none'; }
+  </script>
+
+  <!-- Project JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

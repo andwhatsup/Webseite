@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kontakt | Baumann Secure Tech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- W3 + Font + Icons -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <base href="/src/">
+  <!-- Project CSS (relative to /src/pages/) -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Page-specific styles only -->
+  <style>
+    .bgimg-contact{
+      min-height:60vh;
+      background:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+        url("Bilder/contact.jpg") center/cover no-repeat;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Partials mount points -->
+  <div id="nav"></div>
+  <div id="sidebar"></div>
+
+  <!-- Hero -->
+  <header class="bgimg-contact w3-display-container w3-grayscale-min">
+    <div class="w3-display-middle w3-text-white" style="text-align:center;">
+      <h1 class="w3-xxxlarge w3-animate-top">Kontaktieren Sie uns</h1>
+    </div>
+  </header>
+
+  <!-- Kontaktformular -->
+  <div class="w3-container" style="padding:64px 16px; background-color:#f2f2f2;" id="contact">
+    <h3 class="w3-center">Kontaktformular</h3>
+    <p class="w3-center w3-large">Wir freuen uns auf Ihre Nachricht.</p>
+
+    <div class="w3-container w3-padding-32" style="max-width:900px; margin:auto;">
+      <form class="w3-card-4 w3-white" style="padding:48px;"
+            action="https://formspree.io/f/xldlyqgz" method="POST" onsubmit="return handleSubmit(event)">
+        <div class="w3-row-padding" style="margin:0 -16px;">
+          <div class="w3-half w3-margin-bottom">
+            <label><i class="fa-solid fa-user"></i> Name</label>
+            <input class="w3-input w3-border" type="text" name="name" required>
+          </div>
+          <div class="w3-half">
+            <label><i class="fa-solid fa-envelope"></i> E-Mail</label>
+            <input class="w3-input w3-border" type="email" name="email" required>
+          </div>
+        </div>
+
+        <p>
+          <label><i class="fa-solid fa-pencil"></i> Nachricht</label>
+          <textarea class="w3-input w3-border" name="message" rows="5" placeholder="Wie können wir helfen?" required></textarea>
+        </p>
+
+        <p class="w3-center">
+          <button class="w3-button w3-black w3-padding-large" type="submit">
+            <i class="fa-solid fa-paper-plane"></i> Nachricht senden
+          </button>
+        </p>
+
+        <p id="form-status" class="w3-center w3-padding-16"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- CTA + Footer mounts -->
+  <div id="cta"></div>
+  <div id="footer"></div>
+
+  <!-- Partials loader (paths relative to /src/pages/) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Promise.all([
+        fetch('partials/nav.html',     {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('nav').innerHTML = h; }),
+        fetch('partials/sidebar.html', {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('sidebar').innerHTML = h; }),
+        fetch('partials/cta.html',     {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('cta').innerHTML = h; }),
+        fetch('partials/footer.html',  {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('footer').innerHTML = h; })
+      ]).catch(err => console.error('Partial load failed:', err));
+    });
+
+    // Formspree handler
+    async function handleSubmit(event){
+      event.preventDefault();
+      const form = event.target;
+      const status = document.getElementById('form-status');
+      try{
+        const res = await fetch(form.action, { method: form.method, body: new FormData(form), headers:{'Accept':'application/json'} });
+        if(res.ok){ status.innerHTML = "<div class='w3-panel w3-green'><p>Danke. Nachricht gesendet.</p></div>"; form.reset(); }
+        else{ status.innerHTML = "<div class='w3-panel w3-red'><p>Senden fehlgeschlagen. Später erneut versuchen.</p></div>"; }
+      }catch(_){
+        status.innerHTML = "<div class='w3-panel w3-red'><p>Netzwerkfehler. Später erneut versuchen.</p></div>";
+      }
+    }
+
+    // Sidebar controls (single definition)
+    function w3_open(){ const el=document.getElementById('mySidebar'); if(el) el.style.display='block'; }
+    function w3_close(){ const el=document.getElementById('mySidebar'); if(el) el.style.display='none'; }
+  </script>
+
+  <!-- Project JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

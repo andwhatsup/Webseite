@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <base href="/src/">
+  <meta charset="UTF-8" />
+  <title>Team | Baumann Secure Tech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- W3 + Fonts + Icons -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  
+  <!-- Project CSS (relative to /src/pages/) -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Page-specific CSS -->
+  <style>
+    .bgimg-team{
+      min-height:60vh;
+      background:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+        url("Bilder/team.jpg") center/cover no-repeat;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Partials mount points -->
+  <div id="nav"></div>
+  <div id="sidebar"></div>
+
+  <!-- Header -->
+  <header class="bgimg-team w3-display-container w3-grayscale-min">
+    <div class="w3-display-middle w3-text-white" style="text-align:center;">
+      <h1 class="w3-xxxlarge w3-animate-top">Unser Team</h1>
+      <p class="w3-xlarge">Kompetent. Persönlich. Engagiert.</p>
+    </div>
+  </header>
+
+  <!-- Team -->
+  <section class="w3-container" style="padding:128px 16px" id="team">
+    <h3 class="w3-center">Das Team hinter Baumann Secure Tech</h3>
+
+    <div class="w3-row-padding w3-center w3-grayscale" style="margin-top:64px;justify-content:center;display:flex;flex-wrap:wrap;gap:24px;">
+      <!-- Micha -->
+      <div class="w3-card" style="max-width:420px;padding-top:16px;">
+        <img src="Bilder/Micha.jpg" alt="Micha Baumann" style="width:60%;border-radius:8px;" />
+        <div class="w3-container">
+          <h3>Micha Baumann</h3>
+          <p class="w3-opacity">Geschäftsführer</p>
+          <p>Strategische Planung und individuelle Kundenberatung.</p>
+          <p><a href="pages/contact.html#form" class="w3-button w3-light-grey w3-block"><i class="fa-solid fa-envelope"></i> Kontakt aufnehmen</a></p>
+        </div>
+      </div>
+
+      <!-- Yannik -->
+      <div class="w3-card" style="max-width:420px;padding-top:16px;">
+        <img src="Bilder/Yannik.jpg" alt="Yannik Baumann" style="width:60%;border-radius:8px;" />
+        <div class="w3-container">
+          <h3>Yannik Baumann</h3>
+          <p class="w3-opacity">Cybersecurity Spezialist</p>
+          <p>Sicherheit und technische Umsetzung der Smart-Home-Systeme.</p>
+          <p><a href="pages/contact.html#form" class="w3-button w3-light-grey w3-block"><i class="fa-solid fa-envelope"></i> Kontakt aufnehmen</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + Footer mounts -->
+  <div id="cta"></div>
+  <div id="footer"></div>
+
+  <!-- Partials loader (paths relative to /src/pages/) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Promise.all([
+        fetch('partials/nav.html',     {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('nav').innerHTML = h; }),
+        fetch('partials/sidebar.html', {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('sidebar').innerHTML = h; }),
+        fetch('partials/cta.html',     {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('cta').innerHTML = h; }),
+        fetch('partials/footer.html',  {cache:'no-cache'}).then(r=>r.text()).then(h=>{ document.getElementById('footer').innerHTML = h; })
+      ]).catch(err => console.error('Partial load failed:', err));
+    });
+
+    // Sidebar controls
+    function w3_open(){ const el=document.getElementById('mySidebar'); if(el) el.style.display='block'; }
+    function w3_close(){ const el=document.getElementById('mySidebar'); if(el) el.style.display='none'; }
+  </script>
+
+  <!-- Project JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
